@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}
       {/* <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p> */}
       <footer className="">
         <div className="flex flex-col items-center justify-center my-32 p-8 mx-32">
@@ -45,7 +45,8 @@ export default function RootLayout({
             <Link className='link' href='contact'>Contact Us</Link>
           </div>
         </div>
-      </footer>
+        </footer>
+      </body>
     </html>
   );
 }
