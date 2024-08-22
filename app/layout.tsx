@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
+import Header from '@/components/Header';
 
 import "./globals.css";
 
@@ -16,11 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}
+      <body>
+        <Header />
+
+        {children}
+
       {/* <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p> */}
-      <footer className="">
-        <div className="flex flex-col items-center justify-center my-32 p-8 mx-32">
-          <div className="flex items-center w-full">
+        <footer className=" bg-white w-full">
+          <div className="flex flex-col items-center justify-center py-32 p-8">
+          <div className="flex items-center">
             <div className="flex-grow mt-8 border-t border-gray-300"></div> {/* Left line */}
             <p className="text-xl px-12 mb-6">Can't find the word you're looking for?</p>
             <div className="flex-grow mt-8 border-t border-gray-300"></div> {/* Right line */}
