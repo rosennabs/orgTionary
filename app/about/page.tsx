@@ -1,7 +1,7 @@
 
 function About() {
   return (
-    <div className=" h-screen">
+    <div className=" bg-white h-screen">
       <h1>About</h1>
     </div>
   );
