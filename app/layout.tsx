@@ -42,8 +42,6 @@ export default function RootLayout({
             <span className="text-2xl">|</span>
             <Link className='link' href='glossary'>Glossary</Link>
             <span className="text-2xl">|</span>
-            <Link className='link' href='favourites'>Favourites</Link>
-            <span className="text-2xl">|</span>
             <Link className='link' href='contact'>Contact Us</Link>
           </div>
         </div>

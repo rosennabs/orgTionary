@@ -12,7 +12,6 @@ export default function Header() {
       <div className="flex gap-10">
         <Link className='link' href='about'>About</Link>
         <Link className='link' href='glossary'>Glossary</Link>
-        <Link className='link' href='favourites'>Favourites</Link>
         <Link className='link' href='contact'>Contact Us</Link>
       </div>
 
