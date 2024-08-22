@@ -1,14 +1,21 @@
+import Header from '@/components/Header';
+import { FaSearch } from 'react-icons/fa';
 
 
 export default function Home() {
   return (
-    <main>
-      <div className="flex flex-col items-center w-[180px]">
-        <img className="logo" src="/logo.png" alt="a logo" />
-        <img className="logo-text" src="/OrgTionary.svg" alt="a logo" />
+    <main className='min-h-screen flex flex-col'>
+      <Header />
+      <div className='flex-grow flex flex-col items-center justify-center'>
+        <h1 className='mb-8'>What would you like to find?</h1>
+        <div className='relative flex items-center justify-center'>
+          <input className='bg-white px-4 py-3 rounded-3xl w-[800px]' type='text' placeholder='Search here' />
+          <FaSearch className='absolute right-4 ' />
+        </div>
+
       </div>
       
-      <h1>Welcome to Orgtionary!</h1>
+      
     </main>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+
 import "./globals.css";
 
 
@@ -16,6 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>{children}</body>
+      <footer className="bg-white">
+        <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p>
+      </footer>
     </html>
   );
 }
