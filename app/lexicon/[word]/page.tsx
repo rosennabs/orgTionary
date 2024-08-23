@@ -9,10 +9,25 @@ function WordDetailsPage({ params }) {
   useEffect(() => {
     // Prevent scrolling on the underlying page when component mounts
     document.body.style.overflow = 'hidden';
+    
+    // Add dark overlay to the homepage
+    const overlay = document.createElement('div');
+    overlay.id = 'dark-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    overlay.style.zIndex = '40';
+    document.body.appendChild(overlay);
+
+  
 
     // Clean up to re-enable scrolling when the component unmounts
     return () => {
       document.body.style.overflow = 'auto';
+      document.body.removeChild(overlay);
     };
   }, []);
   
