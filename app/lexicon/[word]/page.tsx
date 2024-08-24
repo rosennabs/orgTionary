@@ -1,9 +1,13 @@
 "use client";
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
 import { data } from '@/helpers/data';
+import InfoModal from '@/components/InfoModal';
+
+
 
 
 function WordDetailsPage({ params }) {
@@ -15,7 +19,7 @@ function WordDetailsPage({ params }) {
   const wordData = data.find(item => item.word === word);
 
   useEffect(() => {
-    
+
     // Prevent scrolling on the underlying page when component mounts
     document.body.style.overflow = 'hidden';
 
@@ -25,12 +29,18 @@ function WordDetailsPage({ params }) {
     };
   }, []);
 
+  const [infoClicked, setInfoClicked] = useState(false);
+
+  const toggleModal = () => {
+    setInfoClicked(!infoClicked);
+  };
+
   return (
-    <div className='flex flex-col'>
-      <Link className="text-white text-xl fixed top-24 right-4 z-50" href="#" onClick={(e) => {
+    <div className='relative flex flex-col'>
+      <Link className="text-white text-3xl fixed top-24 right-4 z-50" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
-      }}> X </Link>
+      }}> <RxCross2 /></Link>
 
       <div className="fixed top-32 left-32 right-0 bottom-0 rounded-tl-xl bg-white z-50 overflow-y-auto">
 
@@ -38,10 +48,31 @@ function WordDetailsPage({ params }) {
           <h1>{word}</h1>
 
           <div className='flex gap-6'>
-            <Link className=' border border-gray-300 p-3 rounded-full' href="#"><RiShareBoxFill /></Link>
-            <Link className='border border-gray-300 p-3 rounded-full' href="#"><RiInformationLine /></Link>
+            <Link className=' relative group border border-gray-300 p-2 rounded-full' href="#">
+              <RiShareBoxFill />
+              <Tooltip>
+                Share
+              </Tooltip>
+            </Link>
+
+            <Link onClick={() => toggleModal()} className='relative group border border-gray-300 p-2 rounded-full' href="#">
+              <RiInformationLine />
+              <Tooltip>
+                Details
+              </Tooltip>
+            </Link>
           </div>
         </div>
+
+        {infoClicked && (
+          <>
+            <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
+
+            </div >
+            <InfoModal toggleModal={toggleModal} />
+          </>
+
+        )}
 
         <div className='word-details px-20 py-8'>
           <h2>Definition</h2>
@@ -49,20 +80,20 @@ function WordDetailsPage({ params }) {
             {wordData ? wordData.definition : "Definition not available. Please check back later."}
           </p>
 
-          {wordData.does_not_mean && 
+          {wordData.does_not_mean &&
             (
-            <>
-          <h2>What it does not mean for the organization</h2>
-          <p>
-            {wordData.does_not_mean}
-              </p>
+              <>
+                <h2>What it does not mean for the organization</h2>
+                <p>
+                  {wordData.does_not_mean}
+                </p>
               </>
             )}
 
           {wordData.example &&
             (
               <>
-          <h2>Usage examples</h2>
+                <h2>Usage examples</h2>
                 <p>
                   {wordData?.example}
                 </p>
@@ -72,19 +103,26 @@ function WordDetailsPage({ params }) {
           {wordData.related_words &&
             (
               <>
-              <h2>Other related words</h2>
-              {wordData.related_words.map((item) => (
-                <ul>
-                  <li>{item}</li>
-                </ul>
-              ))}
-                
+                <h2>Other related words</h2>
+                {wordData.related_words.map((item) => (
+                  <ul>
+                    <li>{item}</li>
+                  </ul>
+                ))}
+
               </>
             )}
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 
 export default WordDetailsPage;
+
+function Tooltip({ children }) {
+  return (
+    <div className='absolute bg-black text-white text-xs left-1/2 mt-2 top-full rounded transform -translate-x-1/2 py-1 px-2 hidden group-hover:block'>{children}</div>
+  );
+
+}
