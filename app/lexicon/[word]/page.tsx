@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
 
 
 function WordDetailsPage({ params }) {
@@ -10,27 +11,13 @@ function WordDetailsPage({ params }) {
   const router = useRouter();
 
   useEffect(() => {
+    
     // Prevent scrolling on the underlying page when component mounts
     document.body.style.overflow = 'hidden';
-
-    // Add dark overlay to the homepage
-    const overlay = document.createElement('div');
-    overlay.id = 'dark-overlay';
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
-    overlay.style.zIndex = '40';
-    document.body.appendChild(overlay);
-
-
 
     // Clean up to re-enable scrolling when the component unmounts
     return () => {
       document.body.style.overflow = 'auto';
-      document.body.removeChild(overlay);
     };
   }, []);
 
@@ -43,8 +30,13 @@ function WordDetailsPage({ params }) {
 
       <div className="fixed top-32 left-32 right-0 bottom-0 rounded-tl-xl bg-white z-50 overflow-y-auto">
 
-        <div className='sticky top-0 bg-white py-4 px-20 border-b'>
+        <div className='flex items-center justify-between sticky top-0 bg-white py-4 px-20 border-b'>
           <h1>{word}</h1>
+
+          <div className='flex gap-6'>
+            <Link className='border border-gray-300 p-3 rounded-full' href="#"><RiShareBoxFill /></Link>
+            <Link className='border border-gray-300 p-3 rounded-full' href="#"><RiInformationLine /></Link>
+          </div>
         </div>
 
         <div className='px-20 py-8'>
