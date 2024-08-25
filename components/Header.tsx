@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
+import { RxCross2 } from "react-icons/rx";
 import { data } from '@/helpers/data';
 
 export default function Header() {
@@ -40,6 +41,12 @@ export default function Header() {
 
   };
 
+  const clearSearch = () => {
+    setSearchTerm(""); // Clear the input field
+    setFilteredWords([]); // Clear the filtered words
+  }
+
+
   return (
     <header className="flex flex-col text-lg mx-8 mt-2">
       <nav className='flex items-center justify-between text-white'>
@@ -70,9 +77,19 @@ export default function Header() {
             onChange={handleInputChange}
           />
 
-          <button type="submit" className='absolute right-4 '>
-            <FaSearch />
-          </button>
+          <div className='flex absolute right-4 gap-4'>
+            <button type="submit" >
+              <FaSearch />
+            </button>
+
+            {filteredWords.length > 0 && (
+              <button className=' text-2xl' onClick={() => clearSearch()}>
+                <RxCross2 />
+              </button>
+            )}
+            
+          </div>
+          
 
         </form>
 
