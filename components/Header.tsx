@@ -1,7 +1,24 @@
+"use client";
+
 import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
+import { data } from '@/helpers/data'; 
 
 export default function Header() {
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const router = useRouter();
+
+  const handleSearch = (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    //Find the word in the data
+    const foundWord = data.find(item => item.word.toLowerCase() == searchTerm.toLowerCase());
+
+    foundWord ? router.push(`/lexicon/${foundWord.word}`) : alert('Word not found');
+  }
 
   return (
     <header className="flex flex-col text-lg mx-8 mt-2">
@@ -24,10 +41,19 @@ export default function Header() {
 
       <div className='flex-grow flex flex-col items-center justify-center my-32'>
         <h1 className='mb-8 text-white'>What would you like to find?</h1>
-        <div className='relative flex items-center justify-center'>
-          <input className='bg-white px-4 py-3 rounded-3xl w-[800px]' type='text' placeholder='Search here' />
-          <FaSearch className='absolute right-4 ' />
-        </div>
+        <form onSubmit={handleSearch} className='relative flex items-center justify-center'>
+          <input
+            className='bg-white px-4 py-3 rounded-3xl w-[800px]'
+            type='text'
+            placeholder='Search here'
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          
+          <button type="submit" className='absolute right-4 '>
+            <FaSearch />
+          </button>
+        </form>
 
       </div>
 

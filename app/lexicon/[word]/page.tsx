@@ -19,6 +19,8 @@ function WordDetailsPage({ params }) {
   const wordData = data.find(item => item.word === word);
 
   useEffect(() => {
+    // Scroll the parent page to the top
+    window.scrollTo(0, 0);
 
     // Prevent scrolling on the underlying page when component mounts
     document.body.style.overflow = 'hidden';
