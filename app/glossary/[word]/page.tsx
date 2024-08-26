@@ -15,8 +15,11 @@ function WordDetailsPage({ params }) {
   const { word } = params;
   const router = useRouter();
 
+  // Decode the `word` parameter to handle spaces and other encoded characters
+  const decodedWord = decodeURIComponent(word as string);
+
   //Fetch applicable data from the word array
-  const wordData = data.find(item => item.word === word);
+  const wordData = data.find(item => item.word === decodedWord);
 
   useEffect(() => {
     // Scroll the parent page to the top
@@ -39,25 +42,25 @@ function WordDetailsPage({ params }) {
 
   return (
     <div className='relative flex flex-col'>
-      <Link className="text-white text-3xl fixed top-24 right-4 z-50" href="#" onClick={(e) => {
+      <Link className="text-white text-3xl fixed top-20 right-4 z-50" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
       }}> <RxCross2 /></Link>
 
-      <div className="fixed top-32 left-32 right-0 bottom-0 rounded-tl-xl bg-white z-50 overflow-y-auto">
+      <div className="fixed top-28 right-0 bottom-0 bg-white z-50 overflow-y-auto">
 
-        <div className='flex items-center justify-between sticky top-0 text-white bg-teal-600 py-4 px-20 border-b'>
-          <h1>{word}</h1>
+        <div className='flex items-center justify-between sticky top-0 bg-indigo-200 py-4 px-20 border-b'>
+          <h1>{decodedWord}</h1>
 
-          <div className='flex gap-6'>
-            <Link className=' relative group border border-gray-300 p-2 rounded-full' href="#">
+          <div className='flex gap-8'>
+            <Link className=' relative group border border-gray-500 p-2 rounded-full' href="#">
               <RiShareBoxFill />
               <Tooltip>
                 Share
               </Tooltip>
             </Link>
 
-            <Link onClick={() => toggleModal()} className='relative group border border-gray-300 p-2 rounded-full' href="#">
+            <Link onClick={() => toggleModal()} className='relative group border border-gray-500 p-2 rounded-full' href="#">
               <RiInformationLine />
               <Tooltip>
                 Details
