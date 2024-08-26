@@ -19,7 +19,7 @@ export default function Header() {
     //Find the word in the data
     const foundWord = data.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
 
-    foundWord ? router.push(`/lexicon/${foundWord.word}`) : alert('Word not found');
+    foundWord ? router.push(`/glossary/${foundWord.word}`) : alert('Word not found');
   };
 
 
@@ -44,11 +44,11 @@ export default function Header() {
   const clearSearch = () => {
     setSearchTerm(""); // Clear the input field
     setFilteredWords([]); // Clear the filtered words
-  }
+  };
 
 
   return (
-    <header className="flex flex-col text-lg mx-8 mt-2">
+    <header className="relative flex flex-col text-lg mx-8 mt-2">
       <nav className='flex items-center justify-between text-white'>
         <div className="flex flex-col">
           <Link href='/'>
@@ -87,9 +87,9 @@ export default function Header() {
                 <RxCross2 />
               </button>
             )}
-            
+
           </div>
-          
+
 
         </form>
 
@@ -98,7 +98,7 @@ export default function Header() {
             <ul>
               {filteredWords.map((word, index) => (
                 <li className='cursor-pointer hover:text-blue-800 hover:underline'
-                  onClick={() => router.push(`/lexicon/${word}`)}
+                  onClick={() => router.push(`/glossary/${word}`)}
                   key={index}
                 >
                   {word}
