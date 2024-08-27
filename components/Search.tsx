@@ -63,7 +63,7 @@ function Search() {
             <FaSearch />
           </button>
 
-          {filteredWords.length > 0 && (
+          {searchTerm && (
             <button className=' text-2xl' onClick={() => clearSearch()}>
               <RxCross2 />
             </button>

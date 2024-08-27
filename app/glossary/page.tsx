@@ -21,9 +21,17 @@ function Glossary() {
     };
   }, []);
 
+  const scrollToLetter = (letter) => {
+    const element = document.getElementById(`word-${letter}`);
+    element.scrollIntoView({
+      behavior: 'smooth',
+   
+    });
+  }
+
   return (
 
-    <div className='absolute w-full max-h-[100vh] inset-0 mt-28 overflow-y-auto bg-white'>
+    <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white'>
       <Link className="text-white text-3xl fixed top-20 right-4" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
@@ -32,14 +40,14 @@ function Glossary() {
       <div className='sticky top-0 bg-indigo-200 p-4 pl-8 '>
         <h2 className='mb-4'>Words A-Z</h2>
         {alphabets.split("").map((letter) => (
-          <span className='mr-5 text-lg'>{letter}</span>
+          <span onClick={() => scrollToLetter(letter)} className='mr-5 p-2 text-lg text-blue-800 hover:underline hover:border hover:border-white cursor-pointer'>{letter}</span>
         ))}
       </div>
 
       {alphabets.split("").map((letter) => {
         const filteredWords = data.filter(item => item.word.startsWith(letter));
         return (
-          <div key={letter} className='m-14'>
+          <div id={`word-${letter}`} key={letter} className='mx-20 my-8'>
             <h1>{letter}</h1>
             {filteredWords.length > 0 ? (
               filteredWords.map((item, index) => (

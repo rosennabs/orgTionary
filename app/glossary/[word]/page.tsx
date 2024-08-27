@@ -49,8 +49,8 @@ function WordDetailsPage({ params }) {
 
       <div className="fixed top-28 right-0 bottom-0 bg-white z-50 overflow-y-auto">
 
-        <div className='flex items-center justify-between sticky top-0 bg-indigo-200 py-4 px-20 border-b'>
-          <h1>{decodedWord}</h1>
+        <div className='flex items-center justify-between sticky top-0 bg-indigo-200 py-4 px-8 border-b'>
+          <h1 className=''>{decodedWord}</h1>
 
           <div className='flex gap-8'>
             <Link className=' relative group border border-gray-500 p-2 rounded-full' href="#">
