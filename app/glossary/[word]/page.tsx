@@ -34,11 +34,47 @@ function WordDetailsPage({ params }) {
     };
   }, []);
 
+  //State for handling the info modal
   const [infoClicked, setInfoClicked] = useState(false);
 
   const toggleModal = () => {
     setInfoClicked(!infoClicked);
   };
+
+  //Handle share link
+  const [copySuccess, setCopySuccess] = useState(false);
+
+  const link = {
+    url: `http://localhost:3000/glossary/${decodedWord}`
+  };
+
+  const shareLink = () => { 
+    if (navigator.share) { //Checks if the Web Share API is available in the user's browser
+      navigator.share(link) //share link via web api and resolve promise
+        .then(() => {
+          console.log('Link successfully shared.');
+
+        })
+        .catch((error) => {
+          console.error('Error sharing link: ', error);
+        })
+      
+      
+    } else {
+      navigator.clipboard.writeText(link.url) //// Fallback to copying the link to the clipboard
+        .then(() => {
+          setCopySuccess(true);
+          console.log("Link copied to clipboard");
+          
+          setTimeout(() => setCopySuccess(false), 3000);
+        })
+        .catch((error) => {
+          console.error('Error copying link to clipboard: ', error);
+        })
+    }
+  }
+
+
 
   return (
     <div className='relative flex flex-col'>
@@ -53,12 +89,22 @@ function WordDetailsPage({ params }) {
           <h1 className=''>{decodedWord}</h1>
 
           <div className='flex gap-8'>
-            <Link className=' relative group border border-gray-500 p-2 rounded-full' href="#">
-              <RiShareBoxFill />
-              <Tooltip>
-                Share
-              </Tooltip>
-            </Link>
+            <div className='flex flex-col'>
+              <button className=' relative group border border-gray-500 p-2 rounded-full' onClick={() => shareLink()}>
+                <RiShareBoxFill />
+                <Tooltip>
+                  Share
+                </Tooltip>
+              </button>
+
+              {copySuccess && (
+                <div>
+                  <span className='text-white text-s bg-black px-2 py-1 absolute right-4 top-28 rounded'> Link copied to clipboard!</span>
+
+                </div>
+              )}
+            </div>
+            
 
             <Link onClick={() => toggleModal()} className='relative group border border-gray-500 p-2 rounded-full' href="#">
               <RiInformationLine />

@@ -8,7 +8,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="relative flex flex-col text-lg mx-8 mt-4 mb-6">
+    <header className="relative flex flex-col text-lg mx-8 mt-4">
       <nav className='flex items-center justify-between text-white'>
         <div className="flex flex-col">
           <Link href='/'>
