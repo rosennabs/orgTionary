@@ -68,8 +68,9 @@ h2 {
 
 .link:hover,
 .link:active {
-  color: #facc15;
-  border-color: #facc15;
+  color: #444444;;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 div[id^="word-"] {

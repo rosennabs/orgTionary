@@ -28,6 +28,18 @@ export default function Header() {
 
       {/* Conditionally render the Search component only on the homepage */}
       {pathname === '/' && <Search />}
+
+      <div className="flex flex-col items-center justify-center py-18 p-8">
+        <div className="flex items-center w-full">
+          <div className="flex-grow mt-8 border-t border-teal-400"></div> {/* Left line */}
+          <p className="text-xl text-white px-12 mb-6">Can't find the word you're looking for?</p>
+          <div className="flex-grow mt-8 border-t border-teal-400"></div> {/* Right line */}
+        </div>
+
+        <strong>
+          <button className="border border-teal-600 bg-teal-600 rounded-sm text-white text-lg py-2 px-6">Submit a request</button>
+        </strong>
+      </div>
     </header>
   );
 }

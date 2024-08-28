@@ -24,30 +24,18 @@ export default function RootLayout({
 
         {/* <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p> */}
         <footer className=" bg-white w-full">
-          <div className="flex flex-col items-center justify-center py-28 p-8">
-            <div className="flex items-center w-full">
-              <div className="flex-grow mt-8 border-t border-gray-300"></div> {/* Left line */}
-              <p className="text-xl px-12 mb-6">Can't find the word you're looking for?</p>
-              <div className="flex-grow mt-8 border-t border-gray-300"></div> {/* Right line */}
-            </div>
+          
 
-            <strong>
-              <button className="border border-teal-600 rounded-sm text-teal-600 text-lg py-2 px-6">Submit a request</button>
-            </strong>
-          </div>
+          <div className="flex items-center justify-between px-8 py-2 text-gray-500">
 
-          <div className="flex flex-col items-center justify-center py-2 bg-teal-600 text-white">
-            <div className="flex items-center gap-6">
-              <img className="w-48 h-14" src="/OrgTionary.svg" alt="orgtionary text" />
-              <p>Copyright © 2024 Rosennabs Production.  All rights reserved.</p>
-            </div>
+            <p>© 2024 Orgtionary</p>
+   
 
             <div className="flex gap-6">
-              <Link className='link' href='about'>About</Link>
-              <span className="text-2xl">|</span>
-              <Link className='link' href='glossary'>Glossary</Link>
-              <span className="text-2xl">|</span>
-              <Link className='link' href='contact'>Contact Us</Link>
+              <Link className='link' href='about'>Accessibility</Link>
+              <Link className='link' href='glossary'>Privacy</Link>
+              <Link className='link' href='contact'>Terms</Link>
+              <Link className='link' href='/glossary'>Glossary</Link>
             </div>
           </div>
         </footer>
