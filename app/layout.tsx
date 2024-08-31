@@ -17,16 +17,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen flex flex-col">
         <Header />
 
-        {children}
+        <main className="flex-grow mt-48">
+          {children}
+        </main>
+        
 
         {/* <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p> */}
-        <footer className=" bg-white w-full">
+        <footer className=" bg-white border-t px-8 py-4">
           
 
-          <div className="flex items-center justify-between px-8 py-2 text-gray-500">
+          <div className="flex items-center justify-between text-gray-500">
 
             <p>© 2024 Orgtionary</p>
    

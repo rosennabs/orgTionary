@@ -47,52 +47,61 @@ function Search() {
 
 
   return (
-    <div className='flex-grow flex flex-col items-center justify-center my-32'>
-      <h1 className='mb-8 text-white'>What would you like to find?</h1>
-      <form onSubmit={handleSearch} className='relative flex items-center justify-center'>
-        <input
-          className='bg-white border px-4 py-3 w-[800px]'
-          type='text'
-          placeholder='Search here'
-          value={searchTerm}
-          onChange={handleInputChange}
-        />
 
-        <div className='flex absolute right-4 gap-4'>
-          <button type="submit" >
-            <FaSearch />
-          </button>
+    <div className='flex items-center justify-around  mb-8 mx-36'>
+      <h1 className='text-6xl w-3/6'>What Would You Like To Find?</h1>
 
-          {searchTerm && (
-            <button className=' text-2xl' onClick={() => clearSearch()}>
-              <RxCross2 />
+      <div className='flex flex-col items-center justify-center relative'>
+        <form onSubmit={handleSearch} className='relative flex items-center justify-center w-[500px]'>
+          <input
+            className='bg-white border border-customGray px-4 py-3 w-full'
+            type='text'
+            placeholder='Search here'
+            value={searchTerm}
+            onChange={handleInputChange}
+          />
+
+          <div className='flex absolute right-4 gap-4'>
+            <button type="submit" >
+              <FaSearch />
             </button>
-          )}
 
-        </div>
+            {searchTerm && (
+              <button className=' text-2xl' onClick={() => clearSearch()}>
+                <RxCross2 />
+              </button>
+            )}
 
-
-      </form>
-
-      {filteredWords.length > 0 && (
-        <div className='search-result bg-white w-[800px] p-4'>
-          <ul>
-            {filteredWords.map((word, index) => (
-              <li className='cursor-pointer hover:text-blue-800 hover:underline'
-                onClick={() => router.push(`/glossary/${word}`)}
-                key={index}
-              >
-                {word}
-              </li>
-            ))}
-
-          </ul>
-
-        </div>
-      )}
+          </div>
 
 
-    </div>
+        </form>
+
+        {filteredWords.length > 0 && (
+          <div className=' absolute top-full mt-2 w-full search-result bg-white border p-4 z-20'>
+            <ul>
+              {filteredWords.map((word, index) => (
+                <li className='cursor-pointer hover:text-blue-800 hover:underline'
+                  onClick={() => router.push(`/glossary/${word}`)}
+                  key={index}
+                >
+                  {word}
+                </li>
+              ))}
+
+            </ul>
+
+          </div>
+        )}
+      </div>
+
+
+
+    </div >
+
+
+
+
 
   );
 }
