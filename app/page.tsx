@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation';
 export default function Home() {
   const pathname = usePathname();
   return (
-    <div className='relative flex flex-col min-h-screen ' >
+    <div className='relative flex flex-col max-h-[100vh] overflow-y-auto' >
       
       {/* Conditionally render the Search component only on the homepage */}
       {pathname === '/' && <Search />}

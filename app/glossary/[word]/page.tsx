@@ -78,12 +78,12 @@ function WordDetailsPage({ params }) {
 
   return (
     <div className='relative flex flex-col'>
-      <Link className="text-white text-3xl fixed top-20 right-4 z-50" href="#" onClick={(e) => {
+      <Link className="text-3xl fixed top-24 right-4 z-50" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
       }}> <RxCross2 /></Link>
 
-      <div className="fixed top-28 right-0 bottom-0 bg-white z-50 overflow-y-auto">
+      <div className="fixed top-36 right-0 bottom-0 bg-white z-50 overflow-y-auto">
 
         <div className='flex items-center justify-between sticky top-0 bg-indigo-200 py-4 px-8 border-b'>
           <h1 className=''>{decodedWord}</h1>

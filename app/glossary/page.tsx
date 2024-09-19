@@ -31,8 +31,8 @@ function Glossary() {
 
   return (
 
-    <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white'>
-      <Link className="text-white text-3xl fixed top-20 right-4" href="#" onClick={(e) => {
+    <div className='absolute w-full max-h-[100vh] inset-0 top-36 overflow-y-auto'>
+      <Link className="text-3xl fixed top-24 right-4" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
       }}> <RxCross2 /></Link>

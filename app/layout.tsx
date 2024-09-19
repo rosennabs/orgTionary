@@ -26,7 +26,7 @@ export default function RootLayout({
         
 
         {/* <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p> */}
-        <footer className=" bg-white border-t px-8 py-4">
+        <footer className="relative bg-white border-t px-8 py-4">
           
 
           <div className="flex items-center justify-between text-gray-500">
