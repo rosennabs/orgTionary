@@ -9,22 +9,20 @@ export default function Header() {
 
   return (
     <header>
-      <nav className="relative flex items-start justify-between text-lg mx-8 mt-8">
-
-        <Link href=''>
-          <div className='flex items-center justify-between w-[250px] border border-customGray rounded-full px-4 py-1'>
-            <CiCircleChevRight />
-            <span className=''>Leave a Feedback</span>
-          </div>
-          
-        </Link>
-       
+      <nav className="relative flex items-start justify-between text-lg mx-20 mt-12">
+        <div className='flex items-center gap-2 w-[200px]'>
+          <img className="logo" src="/logo2.png" alt="orgtionary logo" />
           <Link href='/'>
-            <img className="logo" src="/logo.png" alt="orgtionary logo" />
+            <span className='text-2xl font-semibold tracking-widest text-teal-500'>ORG</span>
+            <span className='text-2xl tracking-widest font-sans'>TIONARY</span>
+            
           </Link>
+        </div>
+        
    
 
-        <div className="flex gap-10">
+        <div className="flex gap-10 font-medium tracking-widest">
+          <Link className='link' href='/'>Home</Link>
           <Link className='link' href='/about'>About</Link>
           <Link className='link' href='/glossary'>Glossary</Link>
           <Link className='link' href='/contact'>Contact Us</Link>

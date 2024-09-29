@@ -48,10 +48,17 @@ function Search() {
 
   return (
 
-    <div className='flex items-center justify-around  mb-8 mx-36'>
-      <h1 className='text-6xl w-3/6'>What Would You Like To Find?</h1>
+    <div className='flex flex-col w-[500px]'>
+      <h1 className='text-4xl tracking-widest text-amber-400'>CORPORATE LEXICON</h1>
+      <p className='text-2xl mb-8 tracking-widest'>find the meaning of jargons used accross the organization in just seconds.</p>
+      
+      <div className='flex text-xl gap-8'>
+        <button className='bg-gradient-to-b from-amber-300 to-amber-600 text-gray-800 font-semibold py-2 px-4 rounded-xl'>Find Word</button>
+        <button className='bg-gradient-to-b from-cyan-100 to-cyan-300 text-gray-800 font-semibold py-2 px-4 rounded-xl'>New Word</button>
+       
+      </div>
 
-      <div className='flex flex-col items-center justify-center relative'>
+      {/* <div className='flex flex-col relative'>
         <form onSubmit={handleSearch} className='relative flex items-center justify-center w-[500px]'>
           <input
             className='bg-white border border-customGray px-4 py-3 w-full'
@@ -93,7 +100,7 @@ function Search() {
 
           </div>
         )}
-      </div>
+      </div> */}
 
 
 

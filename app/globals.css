@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
 
 * {
   box-sizing: border-box;
@@ -13,8 +13,10 @@ html, body {
   height: 100%; /* Ensure the html and body elements take up the full height */
   margin: 0; /* Reset default margins */
   padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  color: #444444;
+  font-family: 'Geologica', sans-serif;
+  font-weight: 100;
+  color: #fbebef;
+  background-color: #30798b;
 }
 
 body {
@@ -25,6 +27,8 @@ body {
 
 main {
   flex-grow: 1; /* Allows the main content to expand and push the footer down */
+  margin: 0px 4px;
+  
 }
 
 footer {
@@ -37,10 +41,7 @@ footer {
   height: 30px;
 }
 
-.book-image{
-  height: 700px;
-  
-}
+
 
 h1 {
   font-size: 35px;
