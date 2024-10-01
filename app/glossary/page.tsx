@@ -6,13 +6,15 @@ import { data } from '@/helpers/data';
 import { RxCross2 } from "react-icons/rx";
 import { CiCirclePlus } from "react-icons/ci";
 import { FaArrowUp} from "react-icons/fa";
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import Search from '@/components/Search';
+import { Tooltip } from '@/app/glossary/[word]/page';
+
 
 const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function Glossary() {
-  const router = useRouter();
+  // const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const scrollRef = useRef(null); // Create a ref for the scrollable div
 
@@ -59,10 +61,14 @@ function Glossary() {
   return (
 
     <div ref={scrollRef}  className='absolute w-full max-h-[100vh] inset-0 top-36 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
-      <Link className="text-3xl fixed top-24 right-4" href="#" onClick={(e) => {
-        e.preventDefault();
-        router.back();
-      }}> <RxCross2 /></Link>
+      <Link className="text-3xl fixed top-24 right-4 text-white" href='/'>
+        <button className='relative group'>
+          <RxCross2 size={35} />
+          <Tooltip>
+            Close
+          </Tooltip>
+        </button>
+      </Link>
 
       <h1>Glossary</h1>
       <hr className='text-gray-600 h-[40px]' />

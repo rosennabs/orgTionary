@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
-import { RxCross2 } from "react-icons/rx";
+import {IoArrowBackCircleOutline } from "react-icons/io5";
 import { data } from '@/helpers/data';
 import InfoModal from '@/components/InfoModal';
 
@@ -77,15 +77,23 @@ function WordDetailsPage({ params }) {
 
 
   return (
-    <div className='relative flex flex-col'>
-      <Link className="text-3xl fixed top-24 right-4 z-50" href="#" onClick={(e) => {
+    <div className='absolute w-full max-h-[100vh] inset-0 top-36 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
+      <Link className="text-3xl fixed top-24 right-4 z-50 text-white" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
-      }}> <RxCross2 /></Link>
+      }}>
+        <button className='relative group'>
+          <IoArrowBackCircleOutline size={35} />
+          <Tooltip>
+            Back
+          </Tooltip>
+        </button>
+        
+      </Link>
 
-      <div className="fixed top-36 right-0 bottom-0 bg-white z-50 overflow-y-auto">
+      <div className="">
 
-        <div className='flex items-center justify-between sticky top-0 py-4 px-8 border-b'>
+        <div className='flex items-center justify-between border-b'>
           <h1 className=''>{decodedWord}</h1>
 
           <div className='flex gap-8'>
@@ -125,7 +133,7 @@ function WordDetailsPage({ params }) {
 
         )}
 
-        <div className='word-details px-20 py-8'>
+        <div className='word-details mt-12'>
           <h2>Definition</h2>
           <p>
             {wordData ? wordData.definition : "Definition not available. Please check back later."}
@@ -171,7 +179,7 @@ function WordDetailsPage({ params }) {
 
 export default WordDetailsPage;
 
-function Tooltip({ children }) {
+export function Tooltip({ children }) {
   return (
     <div className='absolute bg-black text-white text-xs left-1/2 mt-2 top-full rounded transform -translate-x-1/2 py-1 px-2 hidden group-hover:block'>{children}</div>
   );
