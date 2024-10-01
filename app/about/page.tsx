@@ -3,21 +3,17 @@
 import Link from 'next/link';
 import { RxCross2 } from "react-icons/rx";
 import { useRouter } from 'next/navigation';
+import { Tooltip } from '@/app/glossary/[word]/page';
 
 function About() {
 
   const router = useRouter();
 
   return (
-    <div className="absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto p-20 bg-white text-gray-700">
+    <div className="absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20">
     
-      <Link className="text-white text-3xl fixed top-20 right-4" href="#" onClick={(e) => {
-        e.preventDefault();
-        router.back();
-      }}> <RxCross2 /></Link>
-
       <div className='flex items-center justify-around'>
-        <img className="w-[500px]" src="/about.png" alt="" />
+        <img className="w-[500px]" src="/about.png" alt="image of books" />
 
         <div className='w-2/5'>
           <h1>About us</h1>

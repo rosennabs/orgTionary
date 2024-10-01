@@ -60,16 +60,8 @@ function Glossary() {
 
   return (
 
-    <div ref={scrollRef}  className='absolute w-full max-h-[100vh] inset-0 top-36 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
-      <Link className="text-3xl fixed top-24 right-4 text-white" href='/'>
-        <button className='relative group'>
-          <RxCross2 size={35} />
-          <Tooltip>
-            Close
-          </Tooltip>
-        </button>
-      </Link>
-
+    <div ref={scrollRef} className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
+     
       <h1>Glossary</h1>
       <hr className='text-gray-600 h-[40px]' />
       

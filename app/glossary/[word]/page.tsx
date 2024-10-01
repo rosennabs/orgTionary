@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { RxCross2 } from "react-icons/rx";
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
 import {IoArrowBackCircleOutline } from "react-icons/io5";
 import { data } from '@/helpers/data';
@@ -77,13 +78,13 @@ function WordDetailsPage({ params }) {
 
 
   return (
-    <div className='absolute w-full max-h-[100vh] inset-0 top-36 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
-      <Link className="text-3xl fixed top-24 right-4 z-50 text-white" href="#" onClick={(e) => {
+    <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
+      <Link className="text-3xl fixed top-32 right-4 z-50 text-gray-600" href="#" onClick={(e) => {
         e.preventDefault();
         router.back();
       }}>
         <button className='relative group'>
-          <IoArrowBackCircleOutline size={35} />
+          <RxCross2 />
           <Tooltip>
             Back
           </Tooltip>

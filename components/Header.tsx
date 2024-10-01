@@ -11,7 +11,7 @@ export default function Header() {
     <header>
       <nav className="relative flex items-start justify-between text-white text-lg mx-20 mt-12">
         <div className='flex items-center gap-2 w-[200px]'>
-          <img className="logo" src="/logo2.png" alt="orgtionary logo" />
+          <img className="logo" src="/logo.png" alt="orgtionary logo" />
           <Link href='/'>
             <span className='text-2xl font-semibold tracking-widest text-teal-500'>ORG</span>
             <span className='text-2xl tracking-widest font-sans'>TIONARY</span>
