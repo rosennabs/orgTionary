@@ -85,7 +85,7 @@ function WordDetailsPage({ params }) {
 
       <div className="fixed top-36 right-0 bottom-0 bg-white z-50 overflow-y-auto">
 
-        <div className='flex items-center justify-between sticky top-0 bg-indigo-200 py-4 px-8 border-b'>
+        <div className='flex items-center justify-between sticky top-0 py-4 px-8 border-b'>
           <h1 className=''>{decodedWord}</h1>
 
           <div className='flex gap-8'>

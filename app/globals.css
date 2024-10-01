@@ -15,8 +15,8 @@ html, body {
   padding: 0;
   font-family: 'Geologica', sans-serif;
   font-weight: 100;
-  color: #fbebef;
-  background-color: #30798b;
+  color: #4b5563;
+  background-color: #0e7490;
 }
 
 body {
@@ -41,18 +41,33 @@ footer {
   height: 30px;
 }
 
-
+.truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
 
 h1 {
   font-size: 35px;
   font-weight: bold;
   margin-bottom: 16px;
 }
+
 h2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 16px;
 }
+
+h5 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
 
 p {
   font-size: 18px;
@@ -79,8 +94,16 @@ p {
   text-underline-offset: 4px;
 }
 
+.open-word:hover,
+.open-word:active {
+  color: #4b5563;
+  background-color: #ecfeff;
+  
+  
+}
+
 div[id^="word-"] {
-  scroll-margin-top: 150px; /* adjust the scroll position  */
+  scroll-margin-top: 30px; /* adjust the scroll position  */
 }
 
 .contact-container {
