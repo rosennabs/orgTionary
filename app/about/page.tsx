@@ -10,7 +10,7 @@ function About() {
   const router = useRouter();
 
   return (
-    <div className="absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20">
+    <div className="bg-white font-medium text-gray-600 p-20">
     
       <div className='flex items-center justify-around'>
         <img className="w-[500px]" src="/about.png" alt="image of books" />

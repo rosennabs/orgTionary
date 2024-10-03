@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useEffect } from 'react';
-import { Formik, Form } from "formik";
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { RxCross2 } from "react-icons/rx";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
 import { FaArrowRight } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 import FormField from '@/components/FormField';
 import { Tooltip } from '@/app/glossary/[word]/page';
 
@@ -35,12 +34,12 @@ const validationSchema = Yup.object({
   email: Yup.string()
     .email('Invalid email address')
     .required('Email is required'),
-
+  
 });
 
 const questions = [
   {
-    label: "Lexicon",
+    label: "New Word",
     id: "word",
     name: "word",
     placeholder: "Insert word",
@@ -50,7 +49,7 @@ const questions = [
     id: "definition",
     name: "definition",
     as: "textarea",
-    placeholder: "Provide a brief definition",
+    placeholder: "Define the word",
   },
   {
     label: "Clarify what the word does not mean for the organization",
@@ -96,15 +95,13 @@ const questions = [
 ];
 
 
-function WordRequest() {
-
-  const router = useRouter();
+function WordModal(props) {
 
   const initialValues: FormValues = {
     word: '',
     definition: '',
     clarification: '',
-    examples: '',
+    examples:'',
     relatedWords: '',
     links: '',
     comments: '',
@@ -135,57 +132,50 @@ function WordRequest() {
       {({ }) => {
         return (
           <Form>
-            <div className="flex justify-center bg-white font-medium text-gray-600 p-20">
+            
+            <div className="w-full max-h-[100vh] overflow-y-auto bg-white font-medium text-gray-600 py-8 px-20 rounded-xl">
+                <Link className="flex justify-end text-3xl mb-8 z-50 text-gray-600" href="#" onClick={(e) => {
+                  e.preventDefault();
+                  props.setNewWordModal(false);
+                }}>
+                  <button className='relative group'>
+                    <RxCross2 />
+                    <Tooltip>
+                      Back
+                    </Tooltip>
+                  </button>
 
-              <Link className="text-3xl absolute top-40 right-16 z-50 text-gray-600" href="#" onClick={(e) => {
-                e.preventDefault();
-                router.back();
-              }}>
-                <button className='relative group'>
-                  <RxCross2 />
-                  <Tooltip>
-                    Back
-                  </Tooltip>
-                </button>
+                </Link>
 
-              </Link>
+                <div className="flex flex-col items-start justify-evenly">
+                  <div className='contact-left-title'>
+                    <h1 className=' mb-0'>Tell Us More</h1>
+                    <hr className='h-1 w-28 bg-cyan-600' />
+                  </div>
 
-              <div className='flex flex-col items-center justify-center w-3/4 border p-20 rounded-xl shadow-lg bg-white'>
-
-                <div className='contact-left-title'>
-                  <h1 className=' mb-0'>Tell Us More</h1>
-                  <hr className='h-1 w-28 bg-cyan-600' />
-                </div>
-
-                <div className='flex flex-col mt-16 gap-8'>
-                  {questions.map((question, index) => (
-                    <div className='flex gap-8'>
-                      <span className='w-2'>{index + 1}.</span>
+                  <div className='flex flex-col mt-12 gap-8'>
+                    {questions.map((question, index) => (
                       <FormField
-                        className=''
                         key={question.id}
-                        label={question.label}
+                        label={`${index + 1}. ${question.label}`}
                         id={question.id}
                         name={question.name}
                         placeholder={question.placeholder}
                         as={question.as}
-
                       />
-                    </div>
+                    ))}
 
-                  ))}
+                  </div>
+
+                  <button type='submit'>Submit <FaArrowRight /></button>
 
                 </div>
 
-                <button type='submit' className='submit-button w-[150px] mt-16'>Submit <FaArrowRight /></button>
-
 
               </div>
+          
 
-
-
-
-            </div>
+           
           </Form>
         );
       }}
@@ -194,4 +184,4 @@ function WordRequest() {
   );
 }
 
-export default WordRequest;
+export default WordModal;

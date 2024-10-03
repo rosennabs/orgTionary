@@ -26,9 +26,7 @@ body {
 }
 
 main {
-  flex-grow: 1; /* Allows the main content to expand and push the footer down */
-  margin: 0px 4px;
-  
+  flex-grow: 1; /* Allows the main content to expand and push the footer down */ 
 }
 
 footer {
@@ -108,7 +106,7 @@ div[id^="word-"] {
 
 
 .contact-inputs{
-  width: 400px;
+
   height: 50px;
   border:1px solid #0e7490;
   outline: none; /* Prevent default outline */

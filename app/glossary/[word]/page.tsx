@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { RxCross2 } from "react-icons/rx";
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
-import {IoArrowBackCircleOutline } from "react-icons/io5";
 import { data } from '@/helpers/data';
 import InfoModal from '@/components/InfoModal';
 

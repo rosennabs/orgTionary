@@ -17,16 +17,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body className="max-h-[100vh] flex flex-col">
         <Header />
 
-        <main className="flex-grow">
+        <main className="flex-grow max-h-[100vh] mt-8 ">
           {children}
         </main>
         
 
         {/* <p className="text-sm text-gray-500">Background image by <a href="https://www.freepik.com/awesomecontent">awesomecontent</a> on Freepik</p> */}
-        <footer className="relative bg-white border-t px-8 py-4">
+        {/* <footer className="relative bg-white border-t px-8 py-4">
           
 
           <div className="flex items-center justify-between text-gray-500">
@@ -41,7 +41,7 @@ export default function RootLayout({
               <Link className='link' href='/glossary'>Glossary</Link>
             </div>
           </div>
-        </footer>
+        </footer> */}
       </body>
     </html>
   );
