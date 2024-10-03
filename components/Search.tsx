@@ -50,12 +50,12 @@ function Search() {
 
     
 
-    <div className='flex flex-col relative'>
+    <div className='flex flex-col relative mb-8'>
         <form onSubmit={handleSearch} className='relative flex items-center justify-center w-[500px]'>
           <input
           className='bg-white border border-gray-300 rounded-xl px-4 py-3 w-full'
             type='text'
-            placeholder='Search'
+            placeholder='Word Search'
             value={searchTerm}
             onChange={handleInputChange}
           />

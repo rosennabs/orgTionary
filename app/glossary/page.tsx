@@ -68,9 +68,8 @@ function Glossary() {
 
   return (
     
-   <>
-   
-        <div ref={scrollRef} className='bg-white font-medium text-gray-600 p-20'>
+  
+        <div ref={scrollRef} className='bg-white font-medium text-gray-600 p-20'> 
 
           <h1>Glossary</h1>
           <hr className='text-gray-600 h-[40px]' />
@@ -79,7 +78,6 @@ function Glossary() {
 
           <Link href='/submit_request'>
             <button className='flex items-center gap-2 text-white bg-cyan-600 py-2 px-8 rounded-xl'> <CiCirclePlus className='text-3xl font-bold' />Add New </button>
-
           </Link>
               
             <span> <Search /> </span>
@@ -133,7 +131,7 @@ function Glossary() {
     
  
       
-    </>
+    
   )
    
 }
