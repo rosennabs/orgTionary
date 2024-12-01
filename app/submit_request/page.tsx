@@ -162,7 +162,7 @@ function WordRequest() {
                     <div className='flex gap-8'>
                       <span className='w-2'>{index + 1}.</span>
                       <FormField
-                        className=''
+                      
                         key={question.id}
                         label={question.label}
                         id={question.id}

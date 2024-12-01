@@ -1,0 +1,23 @@
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const PORT = 8080;
+
+const server = express();
+
+// Middleware
+server.use(cors());
+server.use(bodyParser.json());
+
+// Mount your routes
+server.use('/api', require('./routes/glossaryRoute'));
+
+// Handle other requests (Next.js)
+server.get("*", (req, res) => {
+  res.status(404).send("Route not found"); // Placeholder if Next.js handler is not present
+});
+
+// Start the server
+server.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});

@@ -1,10 +1,10 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { RxCross2 } from "react-icons/rx";
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
-import { data } from '@/helpers/data';
+import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
 import InfoModal from '@/components/InfoModal';
 
 
@@ -14,12 +14,13 @@ function WordDetailsPage({ params }) {
   //console.log(params); //This outputs {word : "Patient"} depending on which word is clicked on. With the params feature from next.js, we can fetch data related to params.word i.e patient from the database to display information related to the word on this page.
   const { word } = params;
   const router = useRouter();
+  const { glossaryData, loading} = useContext(GlossaryDataContext);
 
   // Decode the `word` parameter to handle spaces and other encoded characters
   const decodedWord = decodeURIComponent(word as string);
 
   //Fetch applicable data from the word array
-  const wordData = data.find(item => item.word === decodedWord);
+  const wordData = glossaryData.find(item => item.word === decodedWord);
 
   useEffect(() => {
     // Scroll the parent page to the top
@@ -74,7 +75,7 @@ function WordDetailsPage({ params }) {
     }
   }
 
-
+  if (loading) return <div>Loading...</div>;
 
   return (
     <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20'>

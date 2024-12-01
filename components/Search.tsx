@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
 import { RxCross2 } from "react-icons/rx";
@@ -46,6 +46,7 @@ function Search() {
   };
 
 
+
   return (
 
     
@@ -53,7 +54,7 @@ function Search() {
     <div className='flex flex-col relative mb-8'>
         <form onSubmit={handleSearch} className='relative flex items-center justify-center w-[500px]'>
           <input
-          className='bg-white border border-gray-300 rounded-xl px-4 py-3 w-full'
+          className='search bg-white border border-gray-300 rounded-xl px-4 py-3 w-full'
             type='text'
             placeholder='Word Search'
             value={searchTerm}

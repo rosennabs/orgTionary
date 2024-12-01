@@ -1,56 +1,44 @@
 "use client";
 
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
-import { data } from '@/helpers/data';
-import { RxCross2 } from "react-icons/rx";
+import { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
 import { CiCirclePlus } from "react-icons/ci";
 import { FaArrowUp } from "react-icons/fa";
-// import { useRouter } from 'next/navigation';
 import Search from '@/components/Search';
-import WordModal from '@/components/WordModal';
-import { Tooltip } from '@/app/glossary/[word]/page';
+
 
 
 const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function Glossary() {
-  // const router = useRouter();
+  
   const [scrollVisible, setScrollVisible] = useState(false);
-  const [newWordModal, setNewWordModal] = useState(false);
-  const scrollRef = useRef(null); // Create a ref for the scrollable div
+  const { glossaryData, loading, error } = useContext(GlossaryDataContext);
 
-// Function to open form to add new word
-  const addNewWord = () => {
-    setNewWordModal(true);
-  }
-
-
+//Handle scrolling visibility
   useEffect(() => {
     const handleScroll = () => {
 
-      if (scrollRef.current.scrollTop > 50) {
+      if (window.scrollY > 50) {
         setScrollVisible(true);
       } else {
         setScrollVisible(false);
       }
     };
 
-    const scrollableDiv = scrollRef.current;
-
-    if (scrollableDiv) {
-      scrollableDiv.addEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('scroll', handleScroll);
 
     // Cleanup the event listener when component unmounts
     return () => {
-      if (scrollableDiv) {
-        scrollableDiv.removeEventListener('scroll', handleScroll);
-      }
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
 
+
+  //Scroll to a specific letter
   const scrollToLetter = (letter) => {
     const element = document.getElementById(`word-${letter}`);
     element.scrollIntoView({
@@ -58,18 +46,21 @@ function Glossary() {
     });
   };
 
+  //Scroll to top
   const scrollToTop = () => {
-    scrollRef.current.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
   };
 
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     
   
-        <div ref={scrollRef} className='bg-white font-medium text-gray-600 p-20'> 
+    <div className='bg-white font-medium text-gray-600 p-20'> 
 
           <h1>Glossary</h1>
           <hr className='text-gray-600 h-[40px]' />
@@ -92,7 +83,7 @@ function Glossary() {
           <hr className='text-gray-600 h-[40px] mt-2' />
 
           {alphabets.split("").map((letter) => {
-            const filteredWords = data.filter(item => item.word.startsWith(letter));
+            const filteredWords = glossaryData.filter(item => item.word.startsWith(letter));
             return (
               <div id={`word-${letter}`} key={letter} className='my-8'>
                 <h1>{letter}</h1>

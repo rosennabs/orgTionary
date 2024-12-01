@@ -11,8 +11,8 @@ function ContactUs() {
   }, []);
 
   return (
-    <div className="flex justify-around bg-white font-medium text-gray-600 p-20">
-      <form action="https://api.web3forms.com/submit" method='POST' className="flex flex-col items-start justify-evenly gap-12 w-2/3">
+    <div className="flex justify-around bg-white font-medium text-gray-600 p-20 h-screen">
+      <form action="https://api.web3forms.com/submit" method='POST' className="flex flex-col items-start justify-evenly w-2/3">
         <div className='contact-left-title'>
           <h1 className=' mb-0'>Get in touch</h1>
           <hr className='h-1 w-28 bg-cyan-600'/>

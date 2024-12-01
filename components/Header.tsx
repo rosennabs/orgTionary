@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { CiCircleChevRight } from "react-icons/ci";
+
 
 export default function Header() {
   const pathname = usePathname();
