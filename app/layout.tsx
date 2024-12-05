@@ -27,7 +27,8 @@ export default function RootLayout({
         <GlossaryDataProvider>
         <main className="mt-8 ">
             {children}
-          <footer className="bg-white border-t px-8 py-4 mt-auto">
+            
+          <footer className="sticky bottom-0 w-full bg-white border-t px-8 py-4 mt-auto">
 
 
             <div className="flex items-center justify-between text-gray-500">
