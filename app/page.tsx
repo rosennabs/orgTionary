@@ -19,9 +19,9 @@ export default function Home() {
 
   const pathname = usePathname();
   return (
-    <div className='flex flex-col min-h-screen' >
+    <div className='flex flex-col h-screen overflow-hidden' >
       
-      <div className='flex items-center justify-around flex-grow -mt-8'>
+      <div className='flex items-center justify-around h-full'>
         
         <div className='flex flex-col w-[500px]'>
           <Search />

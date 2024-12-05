@@ -78,103 +78,107 @@ function WordDetailsPage({ params }) {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
-      <Link className="text-3xl fixed top-32 right-4 z-50 text-gray-600" href="#" onClick={(e) => {
-        e.preventDefault();
-        router.back();
-      }}>
-        <button className='relative group'>
-          <RxCross2 />
-          <Tooltip>
-            Back
-          </Tooltip>
-        </button>
-        
-      </Link>
+    <div className="flex flex-col min-h-screen">
+      <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
+        <Link className="text-3xl fixed top-32 right-4 z-50 text-gray-600" href="#" onClick={(e) => {
+          e.preventDefault();
+          router.back();
+        }}>
+          <button className='relative group'>
+            <RxCross2 />
+            <Tooltip>
+              Back
+            </Tooltip>
+          </button>
 
-      <div className="">
+        </Link>
 
-        <div className='flex items-center justify-between border-b'>
-          <h1 className=''>{decodedWord}</h1>
+        <div className="">
 
-          <div className='flex gap-8'>
-            <div className='flex flex-col'>
-              <button className=' relative group border border-gray-500 p-2 rounded-full' onClick={() => shareLink()}>
-                <RiShareBoxFill />
+          <div className='flex items-center justify-between border-b'>
+            <h1 className=''>{decodedWord}</h1>
+
+            <div className='flex gap-8'>
+              <div className='flex flex-col'>
+                <button className=' relative group border border-gray-500 p-2 rounded-full' onClick={() => shareLink()}>
+                  <RiShareBoxFill />
+                  <Tooltip>
+                    Share
+                  </Tooltip>
+                </button>
+
+                {copySuccess && (
+                  <div>
+                    <span className='text-white text-s bg-black px-2 py-1 absolute right-4 top-28 rounded'> Link copied to clipboard!</span>
+
+                  </div>
+                )}
+              </div>
+
+
+              <Link onClick={() => toggleModal()} className='relative group border border-gray-500 p-2 rounded-full' href="#">
+                <RiInformationLine />
                 <Tooltip>
-                  Share
+                  Details
                 </Tooltip>
-              </button>
-
-              {copySuccess && (
-                <div>
-                  <span className='text-white text-s bg-black px-2 py-1 absolute right-4 top-28 rounded'> Link copied to clipboard!</span>
-
-                </div>
-              )}
+              </Link>
             </div>
-            
-
-            <Link onClick={() => toggleModal()} className='relative group border border-gray-500 p-2 rounded-full' href="#">
-              <RiInformationLine />
-              <Tooltip>
-                Details
-              </Tooltip>
-            </Link>
           </div>
-        </div>
 
-        {infoClicked && (
-          <>
-            <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
+          {infoClicked && (
+            <>
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-40">
 
-            </div >
-            <InfoModal toggleModal={toggleModal} />
-          </>
+              </div >
+              <InfoModal toggleModal={toggleModal} />
+            </>
 
-        )}
+          )}
 
-        <div className='word-details mt-12'>
-          <h2>Definition</h2>
-          <p>
-            {wordData ? wordData.definition : "Definition not available. Please check back later."}
-          </p>
+          <div className='word-details mt-12'>
+            <h2>Definition</h2>
+            <p>
+              {wordData ? wordData.definition : "Definition not available. Please check back later."}
+            </p>
 
-          {wordData.does_not_mean &&
-            (
-              <>
-                <h2>What it does not mean for the organization</h2>
-                <p>
-                  {wordData.does_not_mean}
-                </p>
-              </>
-            )}
+            {wordData.does_not_mean &&
+              (
+                <>
+                  <h2>What it does not mean for the organization</h2>
+                  <p>
+                    {wordData.does_not_mean}
+                  </p>
+                </>
+              )}
 
-          {wordData.example &&
-            (
-              <>
-                <h2>Usage examples</h2>
-                <p>
-                  {wordData?.example}
-                </p>
-              </>
-            )}
+            {wordData.example &&
+              (
+                <>
+                  <h2>Usage examples</h2>
+                  <p>
+                    {wordData?.example}
+                  </p>
+                </>
+              )}
 
-          {wordData.related_words &&
-            (
-              <>
-                <h2>Other related words</h2>
-                {wordData.related_words.map((item) => (
-                  <ul>
-                    <li>{item}</li>
-                  </ul>
-                ))}
+            {wordData.related_words &&
+              (
+                <>
+                  <h2>Other related words</h2>
+                  {wordData.related_words.map((item) => (
+                    <ul>
+                      <li>{item}</li>
+                    </ul>
+                  ))}
 
-              </>
-            )}
-        </div>
+                </>
+              )}
+          </div>
+        </div >
       </div >
-    </div >
+    </div>
+
+   
   );
 }
 
