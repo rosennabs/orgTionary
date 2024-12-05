@@ -1,18 +1,25 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FaArrowRight } from "react-icons/fa";
 
 function ContactUs() {
+  const formRef = useRef(null);
 
   useEffect(() => {
-    // On page load, reset the form fields by reloading the page if coming back from history
-    window.history.replaceState({}, document.title);
-  }, []);
+    // Reset the form when navigating back
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  }, []); // Runs only on component mount
 
   return (
     <div className="flex justify-around bg-white font-medium text-gray-600 p-20 h-screen">
-      <form action="https://api.web3forms.com/submit" method='POST' className="flex flex-col items-start justify-evenly w-2/3">
+      <form ref={formRef}
+        action="https://api.web3forms.com/submit"
+        method='POST'
+        className="flex flex-col items-start justify-evenly w-2/3"
+      >
         <div className='contact-left-title'>
           <h1 className=' mb-0'>Get in touch</h1>
           <hr className='h-1 w-28 bg-cyan-600'/>

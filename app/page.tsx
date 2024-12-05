@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Search from '@/components/Search';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 
@@ -17,13 +16,11 @@ export default function Home() {
   }
   
 
-  const pathname = usePathname();
   return (
-    <div className='flex flex-col h-screen overflow-hidden' >
-      
-      <div className='flex items-center justify-around h-full'>
+   
+    <div className='flex items-center justify-around h-screen -mt-28'>
         
-        <div className='flex flex-col w-[500px]'>
+        <div className='flex flex-col w-[500px] '>
           <Search />
           
           <h1 className='text-4xl tracking-widest text-amber-400'>CORPORATE LEXICON</h1>
@@ -40,11 +37,10 @@ export default function Home() {
           </div>
         </div >
 
-
-        <img className="book-image w-[600px] h-[700px]" src="/about.png" alt="a book diagram" />
+        <img className="book-image w-[600px] max-h-[80vh] object-contain" src="/about.png" alt="a book diagram" />
       </div>
  
       
-    </div>
+  
   );
 }

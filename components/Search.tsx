@@ -57,7 +57,7 @@ function Search() {
           <input
           className='search bg-white border border-gray-300 rounded-xl px-4 py-3 w-full'
             type='text'
-            placeholder='Word Search'
+            placeholder='What are you looking for?'
             value={searchTerm}
             onChange={handleInputChange}
           />
