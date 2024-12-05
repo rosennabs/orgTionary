@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { Formik, Form } from "formik";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -10,6 +10,7 @@ import axios from 'axios';
 import { FaArrowRight } from "react-icons/fa";
 import FormField from '@/components/FormField';
 import { Tooltip } from '@/app/glossary/[word]/page';
+import SuccessMessage from '@/components/SuccessMessage';
 
 
 //Define types for form values
@@ -110,20 +111,29 @@ function WordRequest() {
     email: ''
   };
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const successMessageRef = useRef<HTMLDivElement>(null); // Create a reference for the success message
+
+
+  const toggleSuccessMessage = () => {
+    setFormSubmitted(!formSubmitted);
+  }
+
   const handleSubmit = async (values, actions) => {
+
     try {
+      toggleSuccessMessage();
+      actions.resetForm();
+
+      // Scroll to the success message
+      if (successMessageRef.current) {
+        successMessageRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
       const response = await axios.post('https://api.web3forms.com/submit', {
         access_key: 'dab878f7-aab6-4b05-ad47-18d466320add',
         ...values
       });
-
-      if (response.data.success) {
-        // actions.setStatus({ success: "Form submitted successfully!" }); // Set success message
-        actions.resetForm();  // Reset form fields
-      } else {
-        console.error("Submission failed:", response.data);
-        // actions.setStatus({ error: "Failed to submit form. Please try again." }); // Set error message
-      }
+ 
     } catch (error) {
       console.error("Error submitting form:", error);
       // actions.setStatus({ error: "An error occurred. Please try again." }); // Set error message
@@ -135,11 +145,10 @@ function WordRequest() {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-      initialStatus={{}}>
+      onSubmit={handleSubmit}>
 
       {({ }) => {
-        console.log('Formik Status:', status);   // Check if status updates
+      
         return (
           <Form>
             <div className="flex justify-center bg-white font-medium text-gray-600 p-20">
@@ -189,7 +198,17 @@ function WordRequest() {
 
               </div>
 
+              {formSubmitted && (
+                < >
+                  <div ref={successMessageRef} className="fixed inset-0 bg-black bg-opacity-50 z-40">
 
+                    <div className="m-32">
+                      <SuccessMessage toggleSuccessMessage={toggleSuccessMessage} />
+                    </div>
+                  </div >
+                </>
+
+              )}
 
 
             </div>

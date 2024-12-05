@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
 import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
 import { CiCirclePlus } from "react-icons/ci";
 import { FaArrowUp } from "react-icons/fa";

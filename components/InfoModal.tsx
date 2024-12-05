@@ -1,10 +1,8 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import { RxCross2 } from "react-icons/rx";
 
 function InfoModal({toggleModal}) {
 
-  const router = useRouter();
 
   return (
     

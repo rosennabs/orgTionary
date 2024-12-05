@@ -1,14 +1,15 @@
 import React from 'react';
-import {useState } from 'react';
+import {useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
 import { RxCross2 } from "react-icons/rx";
-import { data } from '@/helpers/data';
+import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
 
 function Search() {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredWords, setFilteredWords] = useState([]);
+  const { glossaryData } = useContext(GlossaryDataContext);
 
   const router = useRouter();
 
@@ -16,7 +17,7 @@ function Search() {
     e.preventDefault(); // Prevent page reload
 
     //Find the word in the data
-    const foundWord = data.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
+    const foundWord = glossaryData.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
 
     foundWord ? router.push(`/glossary/${foundWord.word}`) : alert('Word not found');
   };
@@ -29,7 +30,7 @@ function Search() {
     // Update the list only if there's input
     if (input) {
       // Filter words that start with the search term and return them in an array
-      const filtered = data
+      const filtered = glossaryData
         .filter(item => item.word.toLowerCase().startsWith(input.toLowerCase()))
         .map(item => item.word);
 

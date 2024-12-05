@@ -1,13 +1,7 @@
 "use client";
 
-import Link from 'next/link';
-import { RxCross2 } from "react-icons/rx";
-import { useRouter } from 'next/navigation';
-import { Tooltip } from '@/app/glossary/[word]/page';
-
 function About() {
 
-  const router = useRouter();
 
   return (
     <div className="bg-white font-medium text-gray-600 p-20">
