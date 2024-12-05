@@ -25,16 +25,15 @@ interface FormValues {
 };
 
 const validationSchema = Yup.object({
-  word: Yup.string().required("Required"),
-  definition: Yup.string().required("Required"),
-  clarification: Yup.string().required("Required"),
-  examples: Yup.string().required("Required"),
-  relatedWords: Yup.string().required("Required"),
-  links: Yup.string().required("Required"),
+  word: Yup.string(),
+  definition: Yup.string(),
+  clarification: Yup.string(),
+  examples: Yup.string(),
+  relatedWords: Yup.string(),
+  links: Yup.string(),
   comments: Yup.string(),
   email: Yup.string()
-    .email('Invalid email address')
-    .required('Email is required'),
+    .email('Invalid email address'),
 
 });
 
@@ -74,7 +73,7 @@ const questions = [
     as: "textarea"
   },
   {
-    label: "Provide links to cited resources (if any)",
+    label: "Provide links to cited resources",
     id: "links",
     name: "links",
     placeholder: "Add links",
@@ -111,28 +110,36 @@ function WordRequest() {
     email: ''
   };
 
+  const handleSubmit = async (values, actions) => {
+    try {
+      const response = await axios.post('https://api.web3forms.com/submit', {
+        access_key: 'dab878f7-aab6-4b05-ad47-18d466320add',
+        ...values
+      });
+
+      if (response.data.success) {
+        // actions.setStatus({ success: "Form submitted successfully!" }); // Set success message
+        actions.resetForm();  // Reset form fields
+      } else {
+        console.error("Submission failed:", response.data);
+        // actions.setStatus({ error: "Failed to submit form. Please try again." }); // Set error message
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // actions.setStatus({ error: "An error occurred. Please try again." }); // Set error message
+    }
+  };
+
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={async (values) => {
-        try {
-          const response = await axios.post('https://api.web3forms.com/submit', {
-            access_key: 'dab878f7-aab6-4b05-ad47-18d466320add',
-            ...values
-          });
-
-          if (response.data.success) {
-            console.log("Form submitted successfully!", response.data);
-          } else {
-            console.error("Submission failed:", response.data);
-          }
-        } catch (error) {
-          console.error("Error submitting form:", error);
-        }
-      }}>
+      onSubmit={handleSubmit}
+      initialStatus={{}}>
 
       {({ }) => {
+        console.log('Formik Status:', status);   // Check if status updates
         return (
           <Form>
             <div className="flex justify-center bg-white font-medium text-gray-600 p-20">
@@ -173,7 +180,7 @@ function WordRequest() {
                       />
                     </div>
 
-                  ))}
+                  ))}  
 
                 </div>
 
