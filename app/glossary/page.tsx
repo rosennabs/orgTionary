@@ -76,7 +76,7 @@ function Glossary() {
           <div className='mt-16 '>
 
             {alphabets.split("").map((letter) => (
-              <span onClick={() => scrollToLetter(letter)} className='mr-5 p-2 text-lg text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'>{letter}</span>
+              <span key={letter} onClick={() => scrollToLetter(letter)} className='mr-5 p-2 text-lg text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'>{letter}</span>
             ))}
           </div>
           <hr className='text-gray-600 h-[40px] mt-2' />
@@ -88,10 +88,10 @@ function Glossary() {
                 <h1>{letter}</h1>
                 {filteredWords.length > 0 ? (
                   <div className='flex flex-wrap justify-start gap-6'>
-                    {filteredWords.map((item, index) => (
+                    {filteredWords.map((item) => (
 
 
-                      <Link href={`/glossary/${item.word}`} key={index} className='open-word border shadow-md rounded-lg w-[calc(33.333%-1rem)] h-[200px] p-8 mb-8'>
+                      <Link href={`/glossary/${item.word}`} key={item.word} className='open-word border shadow-md rounded-lg w-[calc(33.333%-1rem)] h-[200px] p-8 mb-8'>
                         <h5 className='text-cyan-600 hover:underline hover:underline-offset-4'>{item.word}</h5>
                         <p className='truncate'>{item.definition}</p>
                       </Link>

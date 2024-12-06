@@ -6,6 +6,8 @@ import { RxCross2 } from "react-icons/rx";
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
 import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
 import InfoModal from '@/components/InfoModal';
+import Tooltip from '@/components/Tooltip';
+
 
 
 
@@ -166,7 +168,7 @@ function WordDetailsPage({ params }) {
                 <>
                   <h2>Other related words</h2>
                   {wordData.related_words.map((item) => (
-                    <ul>
+                    <ul key={item}>
                       <li>{item}</li>
                     </ul>
                   ))}
@@ -184,9 +186,3 @@ function WordDetailsPage({ params }) {
 
 export default WordDetailsPage;
 
-export function Tooltip({ children }) {
-  return (
-    <div className='absolute bg-black text-white text-xs left-1/2 mt-2 top-full rounded transform -translate-x-1/2 py-1 px-2 hidden group-hover:block'>{children}</div>
-  );
-
-}

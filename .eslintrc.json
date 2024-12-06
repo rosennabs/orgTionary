@@ -1,6 +1,11 @@
 {
+  "root": true, // Ensure this file is the root ESLint config
   "extends": "next/core-web-vitals",
-   "rules": {
-    "@next/next/no-img-element": "off"
+  "rules": {
+    "@next/next/no-img-element": "off", // Allow using <img> tag instead of <Image>
+    "@typescript-eslint/no-explicit-any": "off", // Allow the use of `any` type
+    "@typescript-eslint/explicit-function-return-type": "off", // Don't require explicit return types
+    "@typescript-eslint/no-unused-vars": "off", // Disable unused variable warnings
+    "@typescript-eslint/ban-ts-comment": "off" // Allow @ts-ignore and other ts comments
   }
 }

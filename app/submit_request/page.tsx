@@ -9,7 +9,8 @@ import * as Yup from "yup";
 import axios from 'axios';
 import { FaArrowRight } from "react-icons/fa";
 import FormField from '@/components/FormField';
-import { Tooltip } from '@/app/glossary/[word]/page';
+import Tooltip from '@/components/Tooltip';
+
 
 
 

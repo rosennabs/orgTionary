@@ -8,9 +8,9 @@ router.post("/formvalues", async (req, res) => {
     console.log(formValues);
 
     //make an api request to web3forms submitting form entries
-    await axios.post('https://api.web3forms.com/submit', {
-      access_key: 'dab878f7-aab6-4b05-ad47-18d466320add',
-      ...formValues
+    await axios.post("https://api.web3forms.com/submit", {
+      access_key: process.env.web3Form_accessKey,
+      ...formValues,
     });
 
     res.status(200).json({ message: "Form submitted successfully!" });
