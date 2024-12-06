@@ -10,7 +10,9 @@ const db = new Pool({
   // password: process.env.DB_PASS,
   // database: process.env.DB_NAME,
   connectionString: process.env.DATABASE_URL,
- 
+  ssl: {
+    rejectUnauthorized: false, // This is required for Supabase to accept the connection
+  },
 });
 
 
