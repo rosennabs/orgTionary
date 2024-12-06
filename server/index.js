@@ -11,6 +11,7 @@ server.use(bodyParser.json());
 
 // Mount your routes
 server.use('/api', require('./routes/glossaryRoute'));
+server.use('/api', require('./routes/formRoute'));
 
 // Handle other requests (Next.js)
 server.get("*", (req, res) => {

@@ -129,10 +129,7 @@ function WordRequest() {
       if (successMessageRef.current) {
         successMessageRef.current.scrollIntoView({ behavior: 'smooth' });
       }
-      const response = await axios.post('https://api.web3forms.com/submit', {
-        access_key: 'dab878f7-aab6-4b05-ad47-18d466320add',
-        ...values
-      });
+      const response = await axios.post("http://localhost:8080/api/formvalues", values);
  
     } catch (error) {
       console.error("Error submitting form:", error);

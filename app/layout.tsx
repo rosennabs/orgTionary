@@ -10,8 +10,12 @@ export const metadata: Metadata = {
   description: "Ortionary is a platform where users can search and find word definitions tailored to their organizational needs.",
   keywords: "dictionary, organizational glossary, word definitions, custom glossary, terminology platform",
   author: "Rose Francis",
-  viewport: "width=device-width, initial-scale=1.0",
+  
 };
+
+export function generateViewport() {
+  return 'width=device-width, initial-scale=1.0';
+}
 
 export default function RootLayout({
   children,

@@ -5,7 +5,6 @@ const { fetchGlossary } = require('../queries/glossaryData');
 router.get('/glossarydata', async (req, res) => {
   try {
     const glossaryData = await fetchGlossary();
-    console.log(glossaryData);
     res.status(200).json(glossaryData);
   }
   catch (error) {
