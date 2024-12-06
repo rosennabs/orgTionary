@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import { Formik, Form } from "formik";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -10,7 +10,7 @@ import axios from 'axios';
 import { FaArrowRight } from "react-icons/fa";
 import FormField from '@/components/FormField';
 import { Tooltip } from '@/app/glossary/[word]/page';
-import SuccessMessage from '@/components/SuccessMessage';
+
 
 
 //Define types for form values
@@ -111,29 +111,25 @@ function WordRequest() {
     email: ''
   };
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const successMessageRef = useRef<HTMLDivElement>(null); // Create a reference for the success message
 
-
-  const toggleSuccessMessage = () => {
-    setFormSubmitted(!formSubmitted);
-  }
 
   const handleSubmit = async (values, actions) => {
 
     try {
-      toggleSuccessMessage();
-      actions.resetForm();
-
-      // Scroll to the success message
-      if (successMessageRef.current) {
-        successMessageRef.current.scrollIntoView({ behavior: 'smooth' });
-      }
+      
       const response = await axios.post("http://localhost:8080/api/formvalues", values);
- 
+
+      if (response.status === 200) {
+        router.push('/success');// Redirect to the success page
+        actions.resetForm();
+      } else {
+        console.error("Unexpected response status:", response.status);
+      }
+
     } catch (error) {
       console.error("Error submitting form to server:", error);
-      // actions.setStatus({ error: "An error occurred. Please try again." }); // Set error message
+      alert("Failed to submit the form. Please try again later."); // Simple feedback to user
+    
     }
   };
 
@@ -191,19 +187,6 @@ function WordRequest() {
 
 
               </div>
-
-              {formSubmitted && (
-                < >
-                  <div ref={successMessageRef} className="fixed inset-0 bg-black bg-opacity-50 z-40">
-
-                    <div className="m-32">
-                      <SuccessMessage toggleSuccessMessage={toggleSuccessMessage} />
-                    </div>
-                  </div >
-                </>
-
-              )}
-
 
             </div>
           </Form>

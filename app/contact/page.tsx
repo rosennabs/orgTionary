@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
 import { FaArrowRight } from "react-icons/fa";
 import { Formik, Form } from "formik";
 import FormField from '@/components/FormField';
@@ -31,7 +32,8 @@ const questions = [
 ];
 
 function ContactUs() {
-  const formRef = useRef(null);
+
+  const router = useRouter();
 
   const initialValues = {
     name: "",
@@ -39,18 +41,22 @@ function ContactUs() {
     message: ""
   };
 
-  useEffect(() => {
-    // Reset the form when navigating back
-    if (formRef.current) {
-      formRef.current.reset();
-    }
-  }, []); // Runs only on component mount
 
   const handleSubmit = async (values, actions) => {
     try {
       const response = await axios.post("http://localhost:8080/api/formvalues", values);
+
+      if (response.status === 200) {
+        router.push('/success');// Redirect to the success page
+        actions.resetForm();
+      } else {
+        console.error("Unexpected response status:", response.status);
+      }
+
     } catch (error) {
       console.error("Error submitting form to server:", error);
+      alert("Failed to submit the form. Please try again later."); // Simple feedback to user
+
     }
     
   };
@@ -62,7 +68,7 @@ function ContactUs() {
       onSubmit={handleSubmit}>
 
       {() => (
-        <Form ref={formRef} className="flex justify-around bg-white font-medium text-gray-600 p-20 h-screen">
+        <Form className="flex justify-around bg-white font-medium text-gray-600 p-20 h-screen">
 
           <div className="flex flex-col items-start justify-evenly w-2/3">
             <div className='contact-left-title'>
