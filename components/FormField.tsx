@@ -19,7 +19,7 @@ function FormField({
           <textarea
             {...field}
             {...props}
-            className={`contact-inputs textarea w-[700px] ${meta.touched && meta.error && "border-red-600"}`} />
+            className={`contact-inputs textarea ${meta.touched && meta.error && "border-red-600"}`} />
         );
       
       default:
@@ -27,7 +27,7 @@ function FormField({
           <input
             {...field}
             {...props}
-            className={`contact-inputs w-[700px] ${meta.touched && meta.error && "border-red-600"}`}
+            className={`contact-inputs ${meta.touched && meta.error && "border-red-600"}`}
           />
         );
     }

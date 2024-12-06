@@ -132,7 +132,7 @@ function WordRequest() {
       const response = await axios.post("http://localhost:8080/api/formvalues", values);
  
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting form to server:", error);
       // actions.setStatus({ error: "An error occurred. Please try again." }); // Set error message
     }
   };
@@ -170,10 +170,9 @@ function WordRequest() {
                   <hr className='h-1 w-28 bg-cyan-600' />
                 </div>
 
-                <div className='flex flex-col mt-16 gap-8'>
-                  {questions.map((question, index) => (
-                    <div className='flex gap-8'>
-                      <span className='w-2'>{index + 1}.</span>
+                <div className='flex flex-col mt-16 w-[700px] gap-8'>
+                  {questions.map((question) => (
+                    
                       <FormField
                       
                         key={question.id}
@@ -184,8 +183,6 @@ function WordRequest() {
                         as={question.as}
 
                       />
-                    </div>
-
                   ))}  
 
                 </div>
