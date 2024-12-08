@@ -11,12 +11,17 @@ export const GlossaryDataProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Determine the API URL based on the environment
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8080/api/glossarydata" // Development URL
+      : process.env.NEXT_PUBLIC_API_URL + "/api/glossarydata"; // Production URL
+
   // Fetch glossary data
   useEffect(() => {
     const fetchGlossaryData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8080/api/glossarydata");
+        const response = await axios.get(apiUrl);
         setGlossaryData(response.data);
         setLoading(false);
       } catch (err) {
@@ -26,7 +31,7 @@ export const GlossaryDataProvider = ({ children }) => {
     };
 
     fetchGlossaryData();
-  }, []);
+  }, [apiUrl]);
 
   return (
     <GlossaryDataContext.Provider value={{ glossaryData, loading, error }}>

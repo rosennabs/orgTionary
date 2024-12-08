@@ -41,10 +41,15 @@ function ContactUs() {
     message: ""
   };
 
+  // Determine the API URL based on the environment
+  const apiUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:8080/api/formvalues" // Development URL
+      : process.env.NEXT_PUBLIC_API_URL + "/api/formvalues"; // Production URL
 
   const handleSubmit = async (values, actions) => {
     try {
-      const response = await axios.post("http://localhost:8080/api/formvalues", values);
+      const response = await axios.post(apiUrl, values);
 
       if (response.status === 200) {
         router.push('/success');// Redirect to the success page

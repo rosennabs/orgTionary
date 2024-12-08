@@ -1,5 +1,5 @@
 const db = require("../connections/dbConnection");
-
+console.log("DATABASE_URL in fetchGlossary:", process.env.DATABASE_URL);
 //Fetch all glossary data from db
 async function fetchGlossary() {
   try {
@@ -51,3 +51,4 @@ async function fetchGlossary() {
 // };
 
 module.exports = { fetchGlossary};
+ 
