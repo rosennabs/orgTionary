@@ -13,6 +13,22 @@ router.get('/glossarydata', async (req, res) => {
   }
 });
 
+
+router.get("/test-connection", async (req, res) => {
+  try {
+    const result = await db.query("SELECT NOW()");
+    res
+      .status(200)
+      .json({
+        message: "Database connection successful",
+        timestamp: result.rows[0],
+      });
+  } catch (error) {
+    console.error("Error connecting to the database:", error);
+    res.status(500).json({ error: "Failed to connect to the database" });
+  }
+});
+
 // router.post('/newword', async (req, res) => {
 //   try {
 //     const glossaryData = await saveNewWord(req.body);
