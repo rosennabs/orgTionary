@@ -5,8 +5,16 @@ const PORT = process.env.PORT || 8080; // Use dynamic port in production, fallba
 
 const server = express();
 
+const corsOptions = {
+  origin: [
+    "http://localhost:3000", // Allow requests from the local development frontend
+    "https://orgtionary.vercel.app", // Allow requests from the deployed production frontend
+  ],
+  methods: "GET,POST",
+};
+
 // Middleware
-server.use(cors());
+server.use(cors(corsOptions));
 server.use(bodyParser.json());
 
 // Mount your routes
