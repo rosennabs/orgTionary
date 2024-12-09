@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from 'next/link';
 import Header from '@/components/Header';
-import { GlossaryDataProvider } from '@/contexts/GlossaryDataContext';
+import { GlossaryDataProvider } from '@/context/GlossaryDataContext';
 import "./globals.css";
 
 

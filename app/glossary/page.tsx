@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState, useContext } from 'react';
-import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
+import { GlossaryDataContext } from '@/context/GlossaryDataContext';
 import { CiCirclePlus } from "react-icons/ci";
 import { FaArrowUp } from "react-icons/fa";
 import Search from '@/components/Search';
@@ -88,10 +88,10 @@ function Glossary() {
                 <h1>{letter}</h1>
                 {filteredWords.length > 0 ? (
                   <div className='flex flex-wrap justify-start gap-6'>
-                    {filteredWords.map((item) => (
+                    {filteredWords.map((item, index) => (
 
 
-                      <Link href={`/glossary/${item.word}`} key={item.word} className='open-word border shadow-md rounded-lg w-[calc(33.333%-1rem)] h-[200px] p-8 mb-8'>
+                      <Link href={`/glossary/${item.word}`} key={index} className='open-word border shadow-md rounded-lg w-[calc(33.333%-1rem)] h-[200px] p-8 mb-8'>
                         <h5 className='text-cyan-600 hover:underline hover:underline-offset-4'>{item.word}</h5>
                         <p className='truncate'>{item.definition}</p>
                       </Link>

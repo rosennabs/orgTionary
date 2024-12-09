@@ -3,7 +3,7 @@ import {useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
 import { RxCross2 } from "react-icons/rx";
-import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
+import { GlossaryDataContext } from '@/context/GlossaryDataContext';
 
 function Search() {
 

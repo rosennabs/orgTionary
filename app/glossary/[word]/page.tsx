@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { RxCross2 } from "react-icons/rx";
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
-import { GlossaryDataContext } from '@/contexts/GlossaryDataContext';
+import { GlossaryDataContext } from '@/context/GlossaryDataContext';
 import InfoModal from '@/components/InfoModal';
 import Tooltip from '@/components/Tooltip';
 
