@@ -47,9 +47,16 @@ function WordDetailsPage({ params }) {
   //Handle share link
   const [copySuccess, setCopySuccess] = useState(false);
 
+  // Set a dynamic frontend link based on environment
+  const isDev = process.env.NODE_ENV === "development";
+  const baseUrl = isDev
+    ? "http://localhost:3000" // Development URL
+    : process.env.NEXT_PUBLIC_FRONTEND_URL; // Production URL
+
   const link = {
-    url: `http://localhost:3000/glossary/${decodedWord}`
+    url: `${baseUrl}/glossary/${decodedWord}`,
   };
+ 
 
   const shareLink = () => { 
     if (navigator.share) { //Checks if the Web Share API is available in the user's browser
