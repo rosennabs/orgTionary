@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const PORT = 8080;
+const PORT = process.env.PORT || 8080; // Use dynamic port in production, fallback to 8080 for local
 
 const server = express();
 
