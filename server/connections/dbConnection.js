@@ -2,7 +2,7 @@ require("dotenv").config({ path: "../.env" }); //  path to point to your root di
 
 const { Pool } = require("pg"); //run npm install pg
 
-console.log("Environment is:", process.env.NODE_ENV);
+console.log("DATABASE_URL in production:", process.env.DATABASE_URL);
 
 
 // Configure the database connection dynamically
