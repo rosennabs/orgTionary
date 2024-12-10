@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height: 100%; /* Ensure the html and body elements take up the full height */
+  margin: 0; /* Reset default margins */
+  padding: 0;
+  font-family: 'Geologica', sans-serif;
+  font-weight: 100;
+  color: #4b5563;
+  background-color: #0e7490;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+.logo {
+  width: 220px;
+  height: 30px;
+}
+
+.truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+h5 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+
+p {
+  font-size: 18px;
+}
+
+.word-details h2 {
+  font-size: 24px;
+  color: #404040;
+  font-weight: bold;
+  border-bottom: 0.5px solid #d1d5db;
+  
+}
+
+.word-details p {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  font-size: 18px;
+}
+
+.link:hover,
+.link:active {
+  color: #444444;;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.open-word:hover,
+.open-word:active {
+  color: #4b5563;
+  background-color: #ecfeff;
+  
+  
+}
+
+div[id^="word-"] {
+  scroll-margin-top: 30px; /* adjust the scroll position  */
+}
+
+
+.contact-inputs{
+
+  height: 50px;
+  border:1px solid #0e7490;
+  outline: none; /* Prevent default outline */
+  padding-left: 20px;
+  border-radius: 50px;
+}
+
+
+
+.search{
+  outline: none;
+}
+
+.textarea{
+  height: 140px;
+  padding-top: 15px;
+  border-radius: 20px;
+  
+}
+
+.contact-inputs:focus{
+  border: 2px solid #0891b2;
+}
+.search:focus{
+  border: 2px solid #0891b2;
+}
+
+.submit-button{
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+  font-size: 16px;
+  color: #fff;
+  gap: 10px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(250deg, #0e7490,#14b8a6);
+  cursor: pointer;
+}
+
+.submit-button:hover{
+  background: linear-gradient(250deg,#14b8a6, #0d9488);
+}

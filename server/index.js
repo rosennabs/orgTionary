@@ -8,7 +8,7 @@ const server = express();
 const corsOptions = {
   origin: [
     "http://localhost:3000", // Allow requests from the local development frontend
-    "https://orgtionary.vercel.app", // Allow requests from the deployed production frontend
+    "https://orgtionary-frontend.vercel.app", // Allow requests from the deployed production frontend
   ],
   methods: "GET,POST",
 };

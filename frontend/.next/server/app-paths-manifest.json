@@ -1,0 +1,5 @@
+{
+  "/glossary/[word]/page": "app/glossary/[word]/page.js",
+  "/page": "app/page.js",
+  "/glossary/page": "app/glossary/page.js"
+}
