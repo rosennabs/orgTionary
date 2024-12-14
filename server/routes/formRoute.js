@@ -5,7 +5,6 @@ const axios = require("axios");
 router.post("/formvalues", async (req, res) => {
   try {
     const formValues = req.body;
-    console.log(formValues);
 
     //make an api request to web3forms submitting form entries
     await axios.post("https://api.web3forms.com/submit", {

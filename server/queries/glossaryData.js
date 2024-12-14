@@ -18,21 +18,6 @@ async function fetchGlossary() {
   }
 } 
 
-//Fetch all glossary data from db
-// async function fetchGlossary() {
-
-//   try {
-//     const supabase = await createClient();
-//     const data = await supabase.from('healthcare_terms').select();
-//     console.log("Glossary data from supabase: ", data);
-//     return data.rows;
-//   }
-//   catch (err) {
-//     console.error("Error fetching glossary data:", err);
-//     throw err;
-//   }
-// }
-
 
 
 //Save new words to the db

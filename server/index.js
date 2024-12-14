@@ -10,11 +10,16 @@ const corsOptions = {
     "http://localhost:3000", // Allow requests from the local development frontend
     "https://orgtionary-frontend.vercel.app", // Allow requests from the deployed production frontend
   ],
-  methods: "GET,POST",
+  methods: "GET,POST,OPTIONS",
+  allowedHeaders: ["Content-Type", "Authorization"], // Add headers as needed
 };
 
 // Middleware
 server.use(cors(corsOptions));
+
+// Explicitly handle preflight OPTIONS requests
+server.options("*", cors(corsOptions));
+
 server.use(bodyParser.json());
 
 // Mount your routes

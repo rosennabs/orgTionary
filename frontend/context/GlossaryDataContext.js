@@ -25,9 +25,6 @@ export const GlossaryDataProvider = ({ children }) => {
     const fetchGlossaryData = async () => {
       try {
         console.log("Fetching data from:", apiUrl);
-        // const supabase = await createClient();
-        // const data = await supabase.from("healthcare_terms").select();
-        // console.log("Supabase data: ", data);
 
         const response = await axios.get(apiUrl);
         setGlossaryData(response.data);
