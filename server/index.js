@@ -11,7 +11,7 @@ const corsOptions = {
     "https://orgtionary-frontend.vercel.app", // Allow requests from the deployed production frontend
   ],
   methods: "GET,POST,OPTIONS",
-  allowedHeaders: ["Content-Type", "Authorization"], // Add headers as needed
+  allowedHeaders: ["Content-Type", "Authorization"], // Add other headers as needed
 };
 
 // Middleware
