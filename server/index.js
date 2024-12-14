@@ -8,11 +8,13 @@ const server = express();
 const corsOptions = {
   origin: [
     "http://localhost:3000", // Allow requests from the local development frontend
-    "https://orgtionary-frontend.vercel.app", // Allow requests from the deployed production frontend
+    process.env.NEXT_PUBLIC_FRONTEND_URL, // Allow requests from the deployed production frontend
   ],
   methods: "GET,POST,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"], // Add other headers as needed
 };
+
+console.log("CORS Origins:", corsOptions.origin);
 
 // Middleware
 server.use(cors(corsOptions));
