@@ -3,6 +3,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+
 // Create a Context for the glossary data
 export const GlossaryDataContext = createContext();
 
@@ -17,7 +18,6 @@ export const GlossaryDataProvider = ({ children }) => {
     process.env.NODE_ENV === "development"
       ? "http://localhost:8080/api/glossarydata" // Development URL
       : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/glossarydata"; // Production URL
-  console.log("Fetching data from:", apiUrl);
 
 
   // Fetch glossary data
@@ -25,6 +25,9 @@ export const GlossaryDataProvider = ({ children }) => {
     const fetchGlossaryData = async () => {
       try {
         console.log("Fetching data from:", apiUrl);
+        // const supabase = await createClient();
+        // const data = await supabase.from("healthcare_terms").select();
+        // console.log("Supabase data: ", data);
 
         const response = await axios.get(apiUrl);
         setGlossaryData(response.data);

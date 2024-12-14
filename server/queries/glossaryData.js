@@ -1,16 +1,38 @@
-const db = require("../connections/dbConnection");
+const sql = require("../connections/dbConnection");
+
+// Determine environment
+const isDevelopment = process.env.NODE_ENV === "development";
 
 //Fetch all glossary data from db
 async function fetchGlossary() {
   try {
-    const data = await db.query('SELECT * FROM healthcare_terms;');
-    return data.rows;
+    const data = isDevelopment
+      ? await sql.query('SELECT * FROM healthcare_terms;')// For pg Pool in development
+      : await sql`SELECT * FROM healthcare_terms;`;// For postgres in production
+    
+    return data.rows || data; // `.rows` for pg Pool, direct return for postgres
   }
   catch (err) {
     console.error("Error fetching glossary data:", err);
     throw err;
   }
-}
+} 
+
+//Fetch all glossary data from db
+// async function fetchGlossary() {
+
+//   try {
+//     const supabase = await createClient();
+//     const data = await supabase.from('healthcare_terms').select();
+//     console.log("Glossary data from supabase: ", data);
+//     return data.rows;
+//   }
+//   catch (err) {
+//     console.error("Error fetching glossary data:", err);
+//     throw err;
+//   }
+// }
+
 
 
 //Save new words to the db
