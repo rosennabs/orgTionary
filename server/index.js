@@ -15,8 +15,9 @@ const corsOptions = {
     
     // Check if origin is allowed
     if (
+      !origin || // Allow requests without an origin (e.g., server-to-server)
       allowedOrigins.includes(origin) || // Exact match
-      origin.endsWith(".vercel.app") // Ends with "vercel.app"
+      origin.startsWith("https://orgtionary-frontend")// Starts with "orgtionary"
     ) {
       callback(null, true); // Allow the request
     } else {
