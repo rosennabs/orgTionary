@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8080; // Use dynamic port in production, fallback to 8080 for local
@@ -7,15 +7,27 @@ const PORT = process.env.PORT || 8080; // Use dynamic port in production, fallba
 const server = express();
 
 const corsOptions = {
-  origin: [
-    "http://localhost:3000", // Allow requests from the local development frontend
-    process.env.NEXT_PUBLIC_FRONTEND_URL, // Allow requests from the deployed production frontend
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      "http://localhost:3000", // local frontend
+      process.env.NEXT_PUBLIC_FRONTEND_URL, // Production frontend
+    ];
+    
+    // Check if origin is allowed
+    if (
+      allowedOrigins.includes(origin) || // Exact match
+      origin.endsWith(".vercel.app") // Ends with "vercel.app"
+    ) {
+      callback(null, true); // Allow the request
+    } else {
+      console.error(`Blocked by CORS: ${origin}`);
+      callback(new Error("Not allowed by CORS")); // Reject the request
+    }
+  },
   methods: "GET,POST,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"], // Add other headers as needed
 };
-
-console.log("CORS Origins:", corsOptions.origin);
+ 
 
 // Middleware
 server.use(cors(corsOptions));
