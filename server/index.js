@@ -8,11 +8,14 @@ const server = express();
 
 const corsOptions = {
   origin: function (origin, callback) {
+    console.log(`Logging Request Origin: ${origin}`);
+
     const allowedOrigins = [
       "http://localhost:3000", // local frontend
       process.env.NEXT_PUBLIC_FRONTEND_URL, // Production frontend
     ];
-    
+    console.log("Allowed Origins:", allowedOrigins);
+
     // Check if origin is allowed
     if (
       !origin || // Allow requests without an origin (e.g., server-to-server)
