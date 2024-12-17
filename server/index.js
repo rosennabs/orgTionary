@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8080; // Use dynamic port in production, fallback to 8080 for local
 
 const server = express();
+console.log("Server Starting...");
+
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -18,10 +20,12 @@ const corsOptions = {
     console.log("Allowed Origins:", allowedOrigins);
 
     // Allow Vercel preview URLs dynamically
-    const isVercelPreview = origin && origin.endsWith(".vercel.app");
+    const isVercelPreview =
+      origin && origin.match(/https:\/\/.*-.*\.vercel\.app/);
 
     // Check if origin is allowed
     if (!origin || allowedOrigins.includes(origin) || isVercelPreview) {
+      console.log(`Allowed Origin: ${origin}`);
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS")); // Reject the request
@@ -34,14 +38,6 @@ const corsOptions = {
 
 // Middleware
 server.use(cors(corsOptions));
-
-// Temporary Middleware to Manually Set CORS Headers
-server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*"); // Allow all origins (temporary fix)
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
 
 // Explicitly handle preflight OPTIONS requests
 server.options("*", cors(corsOptions));
