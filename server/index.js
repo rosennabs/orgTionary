@@ -5,27 +5,22 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 8080; // Use dynamic port in production, fallback to 8080 for local
 
 const server = express();
-console.log("Server Starting...");
 
 
 const corsOptions = {
   origin: function (origin, callback) {
-    console.log("CORS Middleware Invoked");
 
     const allowedOrigins = [
       "http://localhost:3000", // local frontend
       process.env.NEXT_PUBLIC_FRONTEND_URL ||
         "https://orgtionary-frontend.vercel.app", // Production frontend
     ];
-    console.log("Allowed Origins:", allowedOrigins);
 
     // Allow Vercel preview URLs dynamically
-    const isVercelPreview =
-      origin && origin.match(/https:\/\/.*-.*\.vercel\.app/);
+    const isVercelPreview = origin && origin.endsWith(".vercel.app");
 
     // Check if origin is allowed
     if (!origin || allowedOrigins.includes(origin) || isVercelPreview) {
-      console.log(`Allowed Origin: ${origin}`);
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS")); // Reject the request
