@@ -35,6 +35,14 @@ const corsOptions = {
 // Middleware
 server.use(cors(corsOptions));
 
+// Temporary Middleware to Manually Set CORS Headers
+server.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*"); // Allow all origins (temporary fix)
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  next();
+});
+
 // Explicitly handle preflight OPTIONS requests
 server.options("*", cors(corsOptions));
 
