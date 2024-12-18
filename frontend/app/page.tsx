@@ -21,7 +21,7 @@ export default function Home() {
       <div className='flex flex-col w-[500px] '>
         <Search />
 
-        <h1 className='text-4xl tracking-widest text-amber-400'>CORPORATE LEXICON</h1>
+        <h1 className='tracking-widest text-amber-400'>CORPORATE LEXICON</h1>
         <p className='text-2xl mb-8 tracking-widest text-white'>find the meaning of jargons used accross the organization in just seconds.</p>
 
         <div className='flex text-xl gap-8'>
