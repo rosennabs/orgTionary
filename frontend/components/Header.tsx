@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <header>
-      <nav className="relative flex items-start justify-between text-white text-lg mx-20 mt-12">
+      <nav className="relative flex items-start justify-between text-white text-lg px-20 py-8 bg-customTeal">
         <div className='flex items-center gap-2 w-[200px]'>
           <img className="logo" src="/logo.png" alt="orgtionary logo" />
           <Link href='/'>

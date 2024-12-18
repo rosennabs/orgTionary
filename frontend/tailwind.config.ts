@@ -15,7 +15,8 @@ const config: Config = {
       },
       colors: {
         customGray: '#444444',
-        customBlue: '#30798b'
+        customBlue: '#30798b',
+        customTeal: '#0e7490'
       }
     },
   },

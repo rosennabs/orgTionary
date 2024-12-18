@@ -73,15 +73,16 @@ function ContactUs() {
       onSubmit={handleSubmit}>
 
       {() => (
-        <Form className="flex justify-center sm:justify-around bg-white font-medium text-gray-600 p-20 h-screen">
+        <Form className="relative flex justify-center font-medium text-gray-600 min-h-screen">
 
-          <div className="flex flex-col items-start justify-evenly sm:w-2/3">
+          <div className="flex flex-col mt-12" style={{ width: 'clamp(200px, 70vw, 70vw)' }}>
+            
             <div className='contact-left-title'>
               <h1 className=' mb-0'>Get in touch</h1>
-              <hr className='h-1 w-20 sm:w-28 bg-cyan-600' />
+              <hr className='h-1 w-20 sm:w-28 bg-customTeal' />
             </div>
 
-            <div className='flex flex-col sm:w-[500px] gap-8' style={{ width: 'clamp(200px, 70vw, 500px)' }}>
+            <div className='flex flex-col w-full gap-8 mt-12' >
               {questions.map((question) => (
 
                 <FormField
@@ -95,12 +96,12 @@ function ContactUs() {
               ))}
             </div>
 
-            <button type='submit' className='submit-button mx-auto'>Submit <FaArrowRight /></button>
+            <button type='submit' className='submit-button mt-12 mx-auto'>Submit <FaArrowRight /></button>
           </div>
 
-          <div className='hidden sm:flex items-center w-[800px]'>
-            <img src='/contact-us.png' alt='avatar image of the message sign'></img>
-          </div>
+          
+          <img className='absolute inset-0 h-full w-full object-scale-down -z-10 sm:flex items-center opacity-10' src='/contact-us.png' alt='avatar image of a team'></img>
+        
 
         </Form>
       )}
