@@ -148,9 +148,8 @@ function WordRequest() {
       {({ }) => {
 
         return (
-          <Form>
-            <div className="flex justify-center bg-white font-medium text-gray-600 p-20">
-
+          <Form className="flex justify-center font-medium text-gray-600 min-h-screen mt-20">
+            
               <Link className="text-3xl absolute top-40 right-16 z-50 text-gray-600" href="#" onClick={(e) => {
                 e.preventDefault();
                 router.back();
@@ -164,14 +163,14 @@ function WordRequest() {
 
               </Link>
 
-              <div className='flex flex-col items-center justify-center w-3/4 border p-20 rounded-xl shadow-lg bg-white'>
+              <div className='flex flex-col items-center justify-center border p-20 rounded-xl shadow-lg bg-white' style={{ width: 'clamp(200px, 80vw, 80vw)' }}>
 
                 <div className='contact-left-title'>
                   <h1 className=' mb-0'>Tell Us More</h1>
-                  <hr className='h-1 w-28 bg-cyan-600' />
+                  <hr className='h-1 w-20 sm:w-28 bg-customTeal' />
                 </div>
 
-                <div className='flex flex-col mt-16 w-[700px] gap-8'>
+                <div className='flex flex-col mt-16 w-full gap-8'>
                   {questions.map((question) => (
 
                     <FormField
@@ -193,7 +192,7 @@ function WordRequest() {
 
               </div>
 
-            </div>
+            
           </Form>
         );
       }}
