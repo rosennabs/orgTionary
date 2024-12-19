@@ -110,7 +110,7 @@ function Glossary() {
       })}
 
       {scrollVisible && (
-        <button onClick={scrollToTop} className='fixed bottom-24 right-12 bg-cyan-600 text-white p-3 rounded-full shadow-lg'>
+        <button onClick={scrollToTop} className='fixed animate-bounce bottom-24 right-12 bg-cyan-600 text-white p-3 rounded-full shadow-lg'>
 
           <FaArrowUp size={30} />
         </button>

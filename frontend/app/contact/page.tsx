@@ -75,7 +75,7 @@ function ContactUs() {
       {() => (
         <Form className="relative flex justify-center font-medium text-gray-600 min-h-screen">
 
-          <div className="flex flex-col mt-12" style={{ width: 'clamp(200px, 70vw, 70vw)' }}>
+          <div className="flex flex-col mt-12" style={{ width: 'clamp(200px, 70vw, 60vw)' }}>
             
             <div className='contact-left-title'>
               <h1 className=' mb-0'>Get in touch</h1>

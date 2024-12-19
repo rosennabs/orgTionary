@@ -50,8 +50,6 @@ function Search() {
 
   return (
 
-    
-
     <div className='relative flex flex-col mb-8 w-3/4'>
         <form onSubmit={handleSearch} className='relative flex items-center justify-center'>
           <input

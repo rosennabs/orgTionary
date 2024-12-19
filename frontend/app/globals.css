@@ -25,9 +25,12 @@ body {
 }
 
 
-.logo {
-  width: 220px;
-  height: 30px;
+
+
+@layer base{
+  .logo {
+    width: clamp(2rem, 4vw, 4rem);   
+  }
 }
 
 .truncate {
@@ -80,7 +83,7 @@ p {
 
 .link:hover,
 .link:active {
-  color: #444444;;
+  color: #14b8a6;
   text-decoration: underline;
   text-underline-offset: 4px;
 }

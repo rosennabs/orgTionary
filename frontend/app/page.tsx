@@ -20,14 +20,13 @@ export default function Home() {
 
       <img className="book-image object-scale-down h-[20vh] lg:w-2/5 lg:h-1/2" src="/about.png" alt="a book diagram" />
 
-      <div className='flex flex-col items-center lg:items-start lg:justify-around w-[clamp(100px,100vw,80vw)] lg:w-1/2 text-center lg:text-left'>
+      <div className='flex flex-col items-center lg:items-start w-[clamp(100px,100vw,80vw)] lg:w-1/2 text-center lg:text-left'>
         <Search />
 
         
           <h1 className='tracking-widest text-amber-400'>CORPORATE LEXICON</h1>
           <p className='text-base sm:text-2xl mb-8 tracking-widest text-white'>find the meaning of jargons used accross the organization in just seconds.</p>
 
-       
 
         <div className='flex flex-wrap justify-center text-sm sm:text-xl gap-8'>
           <Link href='/glossary'>
