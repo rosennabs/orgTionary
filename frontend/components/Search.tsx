@@ -52,12 +52,12 @@ function Search() {
 
     
 
-    <div className='flex flex-col relative mb-8'>
-        <form onSubmit={handleSearch} className='relative flex items-center justify-center w-[500px]'>
+    <div className='relative flex flex-col mb-8 w-3/4'>
+        <form onSubmit={handleSearch} className='relative flex items-center justify-center'>
           <input
           className='search bg-white border border-gray-300 rounded-xl px-4 py-3 w-full'
             type='text'
-            placeholder='What are you looking for?'
+            placeholder='Search'
             value={searchTerm}
             onChange={handleInputChange}
           />
@@ -79,7 +79,7 @@ function Search() {
         </form>
 
         {filteredWords.length > 0 && (
-          <div className=' absolute top-full mt-2 w-full search-result bg-white border p-4 z-20'>
+          <div className=' absolute top-full mt-2 w-full text-left bg-white border p-4 z-20'>
             <ul>
               {filteredWords.map((word, index) => (
                 <li className='cursor-pointer hover:text-blue-800 hover:underline'
