@@ -59,27 +59,35 @@ function Glossary() {
   return (
 
 
-    <div className='bg-white font-medium text-gray-600 p-20'>
+    <div className='bg-white font-medium text-gray-600 m-12 lg:m-16'>
 
       <h1>Glossary</h1>
-      <hr className='text-gray-600 h-[40px]' />
+      <hr className='border-gray-200 h-[40px]' />
 
-      <div className='flex items-center justify-between'>
+      <div className='flex max-custom-470:flex-col gap-4 items-center justify-between'>
 
-        <Link href='/submit_request'>
-          <button className='flex items-center gap-2 text-white bg-cyan-600 py-2 px-8 rounded-xl'> <CiCirclePlus className='text-3xl font-bold' />Add New </button>
+        <Link href='/submit_request' className='flex items-center justify-center gap-4  py-2 px-8  rounded-xl text-white text-sm bg-cyan-600'>
+          <CiCirclePlus className='text-3xl font-bold' />
+          <button> Add New </button>
         </Link>
 
-        <span> <Search /> </span>
+        <span className='text-sm'> <Search /> </span>
       </div>
 
-      <div className='mt-16 '>
+      <div className='flex flex-wrap sm:justify-between mt-16 '>
 
         {alphabets.split("").map((letter) => (
-          <span key={letter} onClick={() => scrollToLetter(letter)} className='mr-5 p-2 text-lg text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'>{letter}</span>
+          <span
+            key={letter}
+            onClick={() => scrollToLetter(letter)}
+            className='mr-2 text-lg text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'
+          >
+            {letter}
+            
+          </span>
         ))}
       </div>
-      <hr className='text-gray-600 h-[40px] mt-2' />
+      <hr className='border-gray-200 h-[40px] mt-2' />
 
       {alphabets.split("").map((letter) => {
         const filteredWords = glossaryData.filter(item => item.word.startsWith(letter));
@@ -87,11 +95,11 @@ function Glossary() {
           <div id={`word-${letter}`} key={letter} className='my-8'>
             <h1>{letter}</h1>
             {filteredWords.length > 0 ? (
-              <div className='flex flex-wrap justify-start gap-6'>
+              <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {filteredWords.map((item, index) => (
 
 
-                  <Link href={`/glossary/${item.word}`} key={index} className='open-word border shadow-md rounded-lg w-[calc(33.333%-1rem)] h-[200px] p-8 mb-8'>
+                  <Link href={`/glossary/${item.word}`} key={index} className='open-word border shadow-md hover:shadow-xl rounded-lg h-[200px] p-8 mb-8 transition-shadow duration-300'>
                     <h5 className='text-cyan-600 hover:underline hover:underline-offset-4'>{item.word}</h5>
                     <p className='truncate'>{item.definition}</p>
                   </Link>
@@ -115,7 +123,6 @@ function Glossary() {
           <FaArrowUp size={30} />
         </button>
       )}
-
 
     </div>
 

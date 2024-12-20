@@ -24,7 +24,7 @@ export default function Home() {
         <Search />
 
         
-          <h1 className='tracking-widest text-amber-400'>CORPORATE LEXICON</h1>
+          <h1 className='tracking-widest mt-6 text-amber-400'>CORPORATE LEXICON</h1>
           <p className='text-base sm:text-2xl mb-8 tracking-widest text-white'>find the meaning of jargons used accross the organization in just seconds.</p>
 
 

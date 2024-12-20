@@ -37,7 +37,7 @@ html, body {
 
 @layer base{
   h1 {
-    font-size: clamp(1rem, 4vw, 2rem); /* clamp(min, preferred, max) Will scale between 16px and ~32px depending on viewport */
+    font-size: clamp(1.5rem, 4vw, 2rem); /* clamp(min, preferred, max) Will scale between 16px and ~32px depending on viewport */
     @apply font-bold mb-4;
   }
 }

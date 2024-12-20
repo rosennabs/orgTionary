@@ -50,7 +50,7 @@ function Search() {
 
   return (
 
-    <div className='relative flex flex-col mb-8 w-3/4'>
+    <div className='relative flex flex-col w-full'>
         <form onSubmit={handleSearch} className='relative flex items-center justify-center'>
           <input
           className='search bg-white border border-gray-300 rounded-xl px-4 py-3 w-full'
@@ -62,12 +62,12 @@ function Search() {
 
           <div className='flex absolute right-4 gap-4'>
             <button type="submit" >
-              <FaSearch />
+              <FaSearch size={12}/>
             </button>
 
             {searchTerm && (
-              <button className=' text-2xl' onClick={() => clearSearch()}>
-                <RxCross2 />
+              <button className='text-base' onClick={() => clearSearch()}>
+              <RxCross2 />
               </button>
             )}
 
