@@ -18,7 +18,7 @@ export default function Home() {
 
     <div className='flex flex-col lg:flex-row  lg:px-4 items-center justify-center lg:justify-around min-h-screen bg-customTeal'>
 
-      <img className="book-image object-scale-down h-[20vh] lg:w-2/5 lg:h-1/2" src="/about.png" alt="a book diagram" />
+      <img className="book-image object-scale-down h-[30vh] lg:w-2/5 lg:h-1/2" src="/about.png" alt="a book diagram" />
 
       <div className='flex flex-col items-center lg:items-start w-full max-w-[80vw] lg:w-1/2 text-center lg:text-left'>
         <Search />

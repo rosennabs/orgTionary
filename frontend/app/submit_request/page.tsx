@@ -2,15 +2,11 @@
 
 import React from 'react';
 import { Formik, Form } from "formik";
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { RxCross2 } from "react-icons/rx";
 import * as Yup from "yup";
 import axios from 'axios';
 import { FaArrowRight } from "react-icons/fa";
 import FormField from '@/components/FormField';
-import Tooltip from '@/components/Tooltip';
-
 
 
 
@@ -86,7 +82,7 @@ const questions = [
     id: "comments",
     name: "comments",
     as: "textarea",
-    placeholder: "Tell us more",
+    placeholder: "Type here",
   },
   {
     label: "Email Address",
@@ -148,52 +144,35 @@ function WordRequest() {
       {({ }) => {
 
         return (
-          <Form className="flex justify-center font-medium text-gray-600 min-h-screen mt-20">
-            
-              <Link className="text-3xl absolute top-40 right-16 z-50 text-gray-600" href="#" onClick={(e) => {
-                e.preventDefault();
-                router.back();
-              }}>
-                <button className='relative group'>
-                  <RxCross2 />
-                  <Tooltip>
-                    Back
-                  </Tooltip>
-                </button>
+       
+            <Form className="flex justify-center font-medium text-gray-600 min-h-screen">
 
-              </Link>
-
-              <div className='flex flex-col items-center justify-center border p-20 rounded-xl shadow-lg bg-white' style={{ width: 'clamp(200px, 80vw, 80vw)' }}>
+              <div className="flex flex-col mt-12" style={{ width: 'clamp(200px, 70vw, 60vw)' }}>
 
                 <div className='contact-left-title'>
                   <h1 className=' mb-0'>Tell Us More</h1>
                   <hr className='h-1 w-20 sm:w-28 bg-customTeal' />
                 </div>
 
-                <div className='flex flex-col mt-16 w-full gap-8'>
+                <div className='flex flex-col w-full gap-8 mt-12' >
                   {questions.map((question) => (
-
                     <FormField
-
                       key={question.id}
                       label={question.label}
                       id={question.id}
                       name={question.name}
                       placeholder={question.placeholder}
                       as={question.as}
-
                     />
                   ))}
-
                 </div>
 
-                <button type='submit' className='submit-button w-[150px] mt-16'>Submit <FaArrowRight /></button>
-
-
+                <button type='submit' className='submit-button my-12 mx-auto'>Submit <FaArrowRight /></button>
               </div>
 
-            
-          </Form>
+
+            </Form>
+         
         );
       }}
     </Formik>
