@@ -6,37 +6,42 @@ function InfoModal({toggleModal}) {
 
   return (
     
-    <div className='absolute left-1/2 transform -translate-x-1/2 bg-white rounded-lg border border-gray-300 w-2/5 h-[300px] shadow-lg py-8 px-14 z-50'>
-      <div className='flex'>
-        <button className="ml-auto text-2xl" onClick={() => toggleModal()}>
+    <div className='absolute flex flex-col left-1/2 transform -translate-x-1/2 bg-white rounded-lg border border-gray-300 shadow-lg py-6 px-2 sm:px-8 z-50 max-sm:w-[70vw]'>
+      <div className='flex justify-end'>
+        <button className="relative text-xs sm:text-lg border border-gray-500 rounded-full p-1" onClick={() => toggleModal()}>
           <RxCross2 />
         </button>
       </div>
-      
-      <h2 className='mb-2'>Word Details</h2>
-      <p className='mb-12'>Posted April 24, 2023</p>
-      
-      <div className='flex gap-16'>
-        <div className='flex flex-col'>
-          <span className='mb-2'>Views</span>
-          <span className='text-2xl'>8400</span>
+
+      <div className='flex flex-col items-center justify-center'>
+        <div className='text-center'>
+          <h2 className='-mb-1'>Word Details</h2>
+          <span className='text-sm'>Posted April 24, 2023</span>
         </div>
-        <div className='flex flex-col'>
-          <span className='mb-2'>Saves</span>
-          <span className='text-2xl'>72</span>
-        </div>
-        <div className='flex flex-col'>
-          <span className='mb-2'>Likes</span>
-          <span className='text-2xl'>122</span>
-        </div>
-        <div className='flex flex-col'>
-          <span className='mb-2'>Comments</span>
-          <span className='text-2xl'>50</span>
+        
+
+        <div className='flex max-sm:flex-wrap gap-4 sm:gap-12 text-sm sm:text-base items-center justify-center text-center mt-4'>
+          <div className='flex flex-col'>
+            <span>Views</span>
+            <span>8400</span>
+          </div>
+          <div className='flex flex-col'>
+            <span>Saves</span>
+            <span>72</span>
+          </div>
+          <div className='flex flex-col'>
+            <span>Likes</span>
+            <span>122</span>
+          </div>
+          <div className='flex flex-col'>
+            <span>Comments</span>
+            <span>50</span>
+          </div>
         </div>
       </div>
-      </div>
-    
-   
+      
+      
+      </div>  
   );
 }
 

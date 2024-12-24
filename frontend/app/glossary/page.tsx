@@ -64,27 +64,26 @@ function Glossary() {
       <h1>Glossary</h1>
       <hr className='border-gray-200 h-[40px]' />
 
-      <div className='flex max-custom-470:flex-col gap-4 items-center justify-between'>
+      <div className='flex max-custom-470:flex-col gap-8 items-center justify-between'>
 
-        <Link href='/submit_request' className='flex items-center justify-center gap-4  py-2 px-8  rounded-xl text-white text-sm bg-cyan-600'>
+        <Link href='/submit_request' className='flex items-center justify-center gap-4  py-2 px-6  rounded-xl text-white text-sm bg-cyan-600 '>
           <CiCirclePlus className='text-3xl font-bold' />
-          <button> Add New </button>
+          <button> New Word </button>
         </Link>
 
-        <span className='text-sm'> <Search /> </span>
+        <span className='text-sm max-custom-470:w-full'> <Search /> </span>
       </div>
 
-      <div className='flex flex-wrap sm:justify-between mt-16 '>
+      <div className='flex flex-wrap sm:justify-between mt-12 '>
 
         {alphabets.split("").map((letter) => (
-          <span
+          <p
             key={letter}
             onClick={() => scrollToLetter(letter)}
-            className='mr-2 text-lg text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'
+            className='mr-2 text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'
           >
-            {letter}
-            
-          </span>
+            {letter}       
+          </p>
         ))}
       </div>
       <hr className='border-gray-200 h-[40px] mt-2' />
@@ -98,16 +97,13 @@ function Glossary() {
               <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {filteredWords.map((item, index) => (
 
-
                   <Link href={`/glossary/${item.word}`} key={index} className='open-word border shadow-md hover:shadow-xl rounded-lg h-[200px] p-8 mb-8 transition-shadow duration-300'>
                     <h5 className='text-cyan-600 hover:underline hover:underline-offset-4'>{item.word}</h5>
                     <p className='truncate'>{item.definition}</p>
                   </Link>
 
-
                 ))}
               </div>
-
 
             ) : (
               <p>No words found</p>
@@ -119,7 +115,6 @@ function Glossary() {
 
       {scrollVisible && (
         <button onClick={scrollToTop} className='fixed animate-bounce bottom-24 right-12 bg-cyan-600 text-white p-3 rounded-full shadow-lg'>
-
           <FaArrowUp size={30} />
         </button>
       )}

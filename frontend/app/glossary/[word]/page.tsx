@@ -87,29 +87,14 @@ function WordDetailsPage({ params }) {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className='absolute w-full max-h-[100vh] inset-0 top-28 overflow-y-auto bg-white font-medium text-gray-600 p-20'>
-        <Link className="text-3xl fixed top-32 right-4 z-50 text-gray-600" href="#" onClick={(e) => {
-          e.preventDefault();
-          router.back();
-        }}>
-          <button className='relative group'>
-            <RxCross2 />
-            <Tooltip>
-              Back
-            </Tooltip>
-          </button>
-
-        </Link>
-
-        <div className="">
+    <div className="flex flex-col p-8 min-h-screen">
 
           <div className='flex items-center justify-between border-b'>
-            <h1 className=''>{decodedWord}</h1>
+            <h1 className='mb-2'>{decodedWord}</h1>
 
-            <div className='flex gap-8'>
+            <div className='flex gap-2 md:gap-8 mb-2'>
               <div className='flex flex-col'>
-                <button className=' relative group border border-gray-500 p-2 rounded-full' onClick={() => shareLink()}>
+            <button className='relative group modal-icon custom-370:border border-gray-500 custom-370:p-1 sm:p-2 rounded-full' onClick={() => shareLink()}>
                   <RiShareBoxFill />
                   <Tooltip>
                     Share
@@ -118,17 +103,27 @@ function WordDetailsPage({ params }) {
 
                 {copySuccess && (
                   <div>
-                    <span className='text-white text-s bg-black px-2 py-1 absolute right-4 top-28 rounded'> Link copied to clipboard!</span>
+                <span className='modal-icon text-white text-s bg-black px-2 py-1 absolute right-4 top-28 rounded'> Link copied to clipboard!</span>
 
                   </div>
                 )}
               </div>
 
 
-              <Link onClick={() => toggleModal()} className='relative group border border-gray-500 p-2 rounded-full' href="#">
+          <Link onClick={() => toggleModal()} className='relative group modal-icon custom-370:border border-gray-500 custom-370:p-1 sm:p-2 rounded-full' href="#">
                 <RiInformationLine />
                 <Tooltip>
                   Details
+                </Tooltip>
+              </Link>
+
+              <Link onClick={(e) => {
+                e.preventDefault();
+                router.back();
+          }} className='relative group modal-icon custom-370:border border-gray-500 custom-370:p-1 sm:p-2 rounded-full' href="#">
+                <RxCross2 />
+                <Tooltip>
+                  Close
                 </Tooltip>
               </Link>
             </div>
@@ -183,8 +178,8 @@ function WordDetailsPage({ params }) {
                 </>
               )}
           </div>
-        </div >
-      </div >
+     
+      
     </div>
 
 

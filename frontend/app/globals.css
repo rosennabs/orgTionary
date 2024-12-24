@@ -37,31 +37,40 @@ html, body {
 
 @layer base{
   h1 {
-    font-size: clamp(1.5rem, 4vw, 2rem); /* clamp(min, preferred, max) Will scale between 16px and ~32px depending on viewport */
+    font-size: clamp(1.2rem, 4vw, 2rem); /* clamp(min, preferred, max) Will scale between 16px and ~32px depending on viewport */
     @apply font-bold mb-4;
   }
 }
 
-
-h2 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
+@layer base{
+  h2 {
+    font-size: clamp(1rem, 2vw, 1.5rem); 
+    @apply font-bold mb-4;
+  }
 }
 
-h5 {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 16px;
+@layer base{
+  h5 {
+    font-size: clamp(1rem, 2vw, 1.2rem); 
+    @apply font-bold mb-4;
+  }
+}
+
+@layer base{
+ .modal-icon {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+}
+
+@layer base{
+ p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+  }
 }
 
 
-p {
-  font-size: 18px;
-}
 
 .word-details h2 {
-  font-size: 24px;
   color: #404040;
   font-weight: bold;
   border-bottom: 0.5px solid #d1d5db;
@@ -72,6 +81,18 @@ p {
   margin-top: 1rem;
   margin-bottom: 2rem;
   font-size: 18px;
+}
+
+.word-details ul {
+  font-size: 18px;
+}
+
+@media (max-width: 640px) {
+  .word-details h2,
+  .word-details ul,
+  .word-details p {
+    font-size: 14px;
+  }
 }
 
 .link:hover,
