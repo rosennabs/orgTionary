@@ -68,7 +68,7 @@ function Glossary() {
 
         <Link href='/submit_request' className='flex items-center justify-center gap-4  py-2 px-6  rounded-xl text-white text-sm bg-cyan-600 '>
           <CiCirclePlus className='text-3xl font-bold' />
-          <button> New Word </button>
+          <button> Add New Word </button>
         </Link>
 
         <span className='text-sm max-custom-470:w-full'> <Search /> </span>
@@ -80,7 +80,7 @@ function Glossary() {
           <p
             key={letter}
             onClick={() => scrollToLetter(letter)}
-            className='mr-2 text-gray-400 hover:underline hover:text-blue-800 cursor-pointer'
+            className='mr-2 underline text-blue-600 hover:text-gray-800 cursor-pointer'
           >
             {letter}       
           </p>

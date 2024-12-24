@@ -4,7 +4,7 @@ function About() {
 
 
   return (
-    <div className="relative font-medium text-gray-600 my-8 mx-4">
+    <div className="relative font-medium text-gray-600 my-8 mx-8">
     
       {/* About Us */}
       <div className='flex flex-col md:flex-row  items-center justify-around gap-4'>
