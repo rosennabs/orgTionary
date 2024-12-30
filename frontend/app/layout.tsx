@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Ortionary",
   description: "Ortionary is a platform where users can search and find word definitions tailored to their organizational needs.",
   keywords: "dictionary, organizational glossary, word definitions, custom glossary, terminology platform",
-  author: "Rosemary Okere",
+  authors: [{ name: "Rosemary Okere" }], 
   viewport: "width=device-width, initial-scale=1.0"
 };
 

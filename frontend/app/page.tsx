@@ -7,9 +7,9 @@ import Link from 'next/link';
 
 
 export default function Home() {
-  const [findWord, setFindWord] = useState(false);
+  const [findWord, setFindWord] = useState<boolean>(false);
 
-  const handleFindWord = () => {
+  const handleFindWord = (): void => {
     setFindWord(true);
   };
 

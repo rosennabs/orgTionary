@@ -8,7 +8,7 @@ import FormField from '@/components/FormField';
 import axios from 'axios';
 
 // Define the type for each question object
-interface Question {
+export interface Question {
   label: string;
   id: string;
   name: string;

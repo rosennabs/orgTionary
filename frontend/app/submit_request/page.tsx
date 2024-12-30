@@ -1,12 +1,13 @@
 "use client";
 
 import React from 'react';
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikHelpers } from "formik";
 import { useRouter } from 'next/navigation';
 import * as Yup from "yup";
 import axios from 'axios';
 import { FaArrowRight } from "react-icons/fa";
 import FormField from '@/components/FormField';
+import { Question }from '@/app/contact/page';
 
 
 
@@ -35,7 +36,8 @@ const validationSchema = Yup.object({
 
 });
 
-const questions = [
+
+const questions: Question[] = [
   {
     label: "Lexicon",
     id: "word",
@@ -114,7 +116,7 @@ function WordRequest() {
       ? "http://localhost:8080/api/formvalues" // Development URL
       : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/formvalues"; // Production URL
 
-  const handleSubmit = async (values, actions) => {
+  const handleSubmit = async (values: FormValues, actions: FormikHelpers<FormValues>) => {
 
     try {
 

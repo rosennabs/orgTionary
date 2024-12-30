@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useEffect, useState, useContext } from 'react';
-import { GlossaryDataContext } from '@/context/GlossaryDataContext';
+import { GlossaryDataContext, GlossaryDataContextType } from '@/context/GlossaryDataContext';
 import { CiCirclePlus } from "react-icons/ci";
 import { FaArrowUp } from "react-icons/fa";
 import Search from '@/components/Search';
@@ -13,12 +13,12 @@ const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function Glossary() {
 
-  const [scrollVisible, setScrollVisible] = useState(false);
-  const { glossaryData, loading, error } = useContext(GlossaryDataContext);
+  const [scrollVisible, setScrollVisible] = useState<boolean>(false);
+  const { glossaryData, loading, error } = useContext<GlossaryDataContextType>(GlossaryDataContext);
 
   //Handle scrolling visibility
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (): void => {
 
       if (window.scrollY > 50) {
         setScrollVisible(true);
@@ -38,15 +38,18 @@ function Glossary() {
 
 
   //Scroll to a specific letter
-  const scrollToLetter = (letter) => {
+  const scrollToLetter = (letter: string) => {
     const element = document.getElementById(`word-${letter}`);
-    element.scrollIntoView({
-      behavior: 'smooth',
-    });
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+      });
+    }
+    
   };
 
   //Scroll to top
-  const scrollToTop = () => {
+  const scrollToTop = (): void => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'

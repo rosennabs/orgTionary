@@ -4,22 +4,25 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { RxCross2 } from "react-icons/rx";
 import { RiShareBoxFill, RiInformationLine } from "react-icons/ri";
-import { GlossaryDataContext } from '@/context/GlossaryDataContext';
+import { GlossaryDataContext, GlossaryDataContextType} from '@/context/GlossaryDataContext';
 import InfoModal from '@/components/InfoModal';
 import Tooltip from '@/components/Tooltip';
 
+// Props for this page component
+interface WordDetailsPageProps {
+  params: {
+    word: string;
+  };
+}
 
-
-
-
-function WordDetailsPage({ params }) {
+function WordDetailsPage({ params }: WordDetailsPageProps) {
   //console.log(params); //This outputs {word : "Patient"} depending on which word is clicked on. With the params feature from next.js, we can fetch data related to params.word i.e patient from the database to display information related to the word on this page.
   const { word } = params;
   const router = useRouter();
-  const { glossaryData, loading } = useContext(GlossaryDataContext);
+  const { glossaryData, loading } = useContext<GlossaryDataContextType>(GlossaryDataContext);
 
   // Decode the `word` parameter to handle spaces and other encoded characters
-  const decodedWord = decodeURIComponent(word as string);
+  const decodedWord = decodeURIComponent(params.word);
 
   //Fetch applicable data from the word array
   const wordData = glossaryData.find(item => item.word === decodedWord);
@@ -40,12 +43,12 @@ function WordDetailsPage({ params }) {
   //State for handling the info modal
   const [infoClicked, setInfoClicked] = useState(false);
 
-  const toggleModal = () => {
+  const toggleModal = (): void => {
     setInfoClicked(!infoClicked);
   };
 
   //Handle share link
-  const [copySuccess, setCopySuccess] = useState(false);
+  const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
   // Set a dynamic frontend link based on environment
   const isDev = process.env.NODE_ENV === "development";
@@ -58,7 +61,7 @@ function WordDetailsPage({ params }) {
   };
 
 
-  const shareLink = () => {
+  const shareLink = (): void => {
     if (navigator.share) { //Checks if the Web Share API is available in the user's browser
       navigator.share(link) //share link via web api and resolve promise
         .then(() => {
@@ -145,7 +148,7 @@ function WordDetailsPage({ params }) {
               {wordData ? wordData.definition : "Definition not available. Please check back later."}
             </p>
 
-            {wordData.does_not_mean &&
+            {wordData?.does_not_mean &&
               (
                 <>
                   <h2>What it does not mean for the organization</h2>
@@ -155,7 +158,7 @@ function WordDetailsPage({ params }) {
                 </>
               )}
 
-            {wordData.example &&
+            {wordData?.example &&
               (
                 <>
                   <h2>Usage examples</h2>
@@ -165,7 +168,7 @@ function WordDetailsPage({ params }) {
                 </>
               )}
 
-            {wordData.related_words &&
+            {wordData?.related_words &&
               (
                 <>
                   <h2>Other related words</h2>
