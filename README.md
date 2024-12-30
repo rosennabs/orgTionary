@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# OrgTionary
 
-## Getting Started
+**OrgTionary** is a platform where users can search and find word definitions tailored to their organizational needs. It helps teams maintain a shared vocabulary with custom definitions, usage examples, and related terms—all centrally managed in a single, dynamic glossary.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Live Demo
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit the **live** OrgTionary app, deployed on Vercel:  
+[**OrgTionary on Vercel**](https://orgtionary-frontend.vercel.app/)  
+*(Replace with your actual URL.)*
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+>No local setup is required to explore OrgTionary. Simply open the link above and start browsing or searching the glossary!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
+## Technology Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **[Next.js + React (App Router)](https://nextjs.org/)**  
+  - React-based framework for server rendering, static site generation, and route handling.  
+  - **TypeScript** for type safety and improved developer experience.  
+  - Deployed on **Vercel** for a seamless CI/CD pipeline.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Context API (`GlossaryDataContext`)**  
+  - Provides a global data store for glossary terms, definitions, usage examples, etc.
 
-## Deploy on Vercel
+### Backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **[Node.js](https://nodejs.org/)**  
+  - Custom server logic and RESTful endpoints (if applicable) to handle data requests.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **[PostgreSQL via Supabase](https://supabase.com/)**  
+  - In production, the OrgTionary database is hosted on Supabase, which provides a managed PostgreSQL database (and additional features like authentication if needed).
+  - Locally, you can run a Postgres instance to mirror production behavior, or use Supabase's free tier for development.
+
+>**Architecture**: The frontend (Next.js) may fetch data from a Node server, which in turn communicates with a PostgreSQL database. This clean separation allows for scalable, maintainable code.
+
+---
+
+## How It Works
+
+1. **User Interface**  
+   - Users can browse or search for specific words in the **OrgTionary**.  
+   - Each word has a dedicated detail page: definition, usage examples, and related terms.
+
+2. **Global Data Management**  
+   - The **`GlossaryDataContext`** provides a unified source of truth for the glossary data.  
+   - Components across the app can easily consume the data without repeated fetching.
+
+3. **Backend & Database**  
+   - When the user fetches a particular word, the Node backend queries the PostgreSQL database for the matching record.  
+   - The data is returned to Next.js for server-side or client-side rendering (depending on your implementation).
+
+4. **Deployed on Vercel**  
+   - The Next.js app is continuously deployed to Vercel, so each push to the main branch updates the live site almost instantly.
+
+## Contributing
+If you want to contribute (e.g., fix a bug or add a feature):
+
+- Fork the repository.
+- Create a feature branch with your changes.
+- Submit a Pull Request describing the changes.
+
+## More Info
+- Next.js Docs: https://nextjs.org/docs
+- Node.js: https://nodejs.org/
+- PostgreSQL: https://www.postgresql.org/
+- Deploying on Vercel: https://vercel.com/docs
