@@ -65,6 +65,25 @@ If you want to contribute (e.g., fix a bug or add a feature):
 - Create a feature branch with your changes.
 - Submit a Pull Request describing the changes.
 
+
+## Data Disclaimer
+
+The words, definitions, and examples in this demo are **dummy data** used solely for illustration. They may not reflect accurate or official definitions for real organizations or industries. 
+
+## MVP Status & Future Features
+
+**OrgTionary** is currently at a **minimal viable product (MVP)** stage. It demonstrates the core functionality of defining and searching for words within an organizational context. 
+
+### Potential Enhancements
+- **User Favorites**: Allow users to bookmark or “favorite” words for quick reference.
+- **User-Generated Content**: Let authenticated users add or edit definitions, examples, and related terms directly in the app.
+- **Tags & Categories**: Introduce a tagging system or categories for more nuanced grouping of words.
+- **Permissions & Roles**: Define different access levels (e.g., admin, editor, viewer).
+- **Collaboration Tools**: Let team members comment on or discuss specific definitions.
+- **Analytics**: Track word usage, search frequency, or trending terms.
+
+*Feel free to suggest or contribute any new features by opening an issue or submitting a pull request!* 
+
 ## More Info
 - Next.js Docs: https://nextjs.org/docs
 - Node.js: https://nodejs.org/
