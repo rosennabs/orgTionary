@@ -21,6 +21,9 @@ Visit the **live** OrgTionary app, deployed on Vercel:
   - React-based framework for server rendering, static site generation, and route handling.  
   - **TypeScript** for type safety and improved developer experience.  
   - Deployed on **Vercel** for a seamless CI/CD pipeline.
+-  **Tailwind CSS + Global Styles**  
+    - Utility-first styling using [Tailwind CSS](https://tailwindcss.com/).
+   - Additional global styles are defined in `globals.css`.
 
 - **Context API (`GlossaryDataContext`)**  
   - Provides a global data store for glossary terms, definitions, usage examples, etc.
