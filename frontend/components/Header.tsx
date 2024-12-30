@@ -6,7 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null); //Specify that the ref will point to a < div > element.
 
   // Toggle menu visibility
   const handleMenuToggle = () => {
@@ -20,15 +20,23 @@ export default function Header() {
 
   //Click outside handler
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setMenuOpen(false);
       }
     };
 
+    // If the menu is open, add the event listener
     if (menuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
+
+    // Cleanup the event listener on unmount or when menu closes
+    return () => {
+      if (menuOpen) {
+        document.removeEventListener('mousedown', handleClickOutside);
+      }
+    };
   }, [menuOpen]);
 
 

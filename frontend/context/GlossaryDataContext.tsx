@@ -1,16 +1,38 @@
 "use client"
 
-import React, { createContext, useState, useEffect } from "react";
+import React, { ReactNode, createContext, useState, useEffect } from "react";
 import axios from "axios";
 
+// Define the interface for a glossary item
+export interface GlossaryItem {
+  id: string;
+  word: string;
+  definition: string;
+  does_not_mean: string;
+  example: string;
+  related_words: string[];
+}
+
+// Define the interface for the context
+export interface GlossaryDataContextType {
+  glossaryData: GlossaryItem[];
+  loading: boolean;
+  error: string | null;
+}
 
 // Create a Context for the glossary data
-export const GlossaryDataContext = createContext();
+export const GlossaryDataContext = createContext<GlossaryDataContextType>({
+  glossaryData: [],
+  loading: true,
+  error: null,
+});
 
-export const GlossaryDataProvider = ({ children }) => {
-  const [glossaryData, setGlossaryData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
+// Provide the context in a component
+export const GlossaryDataProvider = ({children}: { children: ReactNode }) => {
+  const [glossaryData, setGlossaryData] = useState<GlossaryItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Determine the API URL based on the environment
 
@@ -28,6 +50,7 @@ export const GlossaryDataProvider = ({ children }) => {
 
         const response = await axios.get(apiUrl);
         setGlossaryData(response.data);
+        
         setLoading(false);
       } catch (err) {
         setError("Error fetching glossary data");

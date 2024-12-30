@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   keywords: "dictionary, organizational glossary, word definitions, custom glossary, terminology platform",
   author: "Rosemary Okere",
   viewport: "width=device-width, initial-scale=1.0"
-
 };
 
 

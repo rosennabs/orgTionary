@@ -1,8 +1,11 @@
 import React from 'react';
 import { RxCross2 } from "react-icons/rx";
 
-function InfoModal({toggleModal}) {
+interface InfoModalProps {
+  toggleModal: () => void;
+}
 
+function InfoModal({toggleModal}: InfoModalProps) {
 
   return (
     

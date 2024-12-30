@@ -3,12 +3,20 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 import { FaArrowRight } from "react-icons/fa";
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikHelpers } from "formik";
 import FormField from '@/components/FormField';
 import axios from 'axios';
 
+// Define the type for each question object
+interface Question {
+  label: string;
+  id: string;
+  name: string;
+  as?: React.ElementType; // Optional property
+  placeholder: string;
+}
 
-const questions = [
+const questions: Question[] = [
   {
     label: "Name",
     id: "name",
@@ -31,11 +39,18 @@ const questions = [
 
 ];
 
+
+interface InitialValues {
+  name: string;
+  email: string;
+  message: string;
+}
+
 function ContactUs() {
 
   const router = useRouter();
 
-  const initialValues = {
+  const initialValues : InitialValues = {
     name: "",
     email: "",
     message: ""
@@ -47,13 +62,13 @@ function ContactUs() {
       ? "http://localhost:8080/api/formvalues" // Development URL
       : process.env.NEXT_PUBLIC_BACKEND_URL + "/api/formvalues"; // Production URL
 
-  const handleSubmit = async (values, actions) => {
+  const handleSubmit = async (values:InitialValues, actions:FormikHelpers<InitialValues>) => {
     try {
       const response = await axios.post(apiUrl, values);
-
       if (response.status === 200) {
         router.push('/success');// Redirect to the success page
         actions.resetForm();
+  
       } else {
         console.error("Unexpected response status:", response.status);
       }

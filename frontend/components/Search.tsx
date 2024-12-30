@@ -3,18 +3,20 @@ import {useState, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
 import { RxCross2 } from "react-icons/rx";
-import { GlossaryDataContext } from '@/context/GlossaryDataContext';
+import { GlossaryDataContext, GlossaryDataContextType } from '@/context/GlossaryDataContext';
+
+
 
 function Search() {
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredWords, setFilteredWords] = useState([]);
-  const { glossaryData } = useContext(GlossaryDataContext);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredWords, setFilteredWords] = useState<string[]>([]);
+  const { glossaryData } = useContext<GlossaryDataContextType>(GlossaryDataContext);
 
   const router = useRouter();
 
-  const handleSearch = (e) => {
-    e.preventDefault(); // Prevent page reload
+  const handleSearch = (event:React.FormEvent) => {
+    event.preventDefault(); // Prevent page reload
 
     //Find the word in the data
     const foundWord = glossaryData.find(item => item.word.toLowerCase() === searchTerm.toLowerCase());
@@ -23,8 +25,8 @@ function Search() {
   };
 
 
-  const handleInputChange = (e) => {
-    const input = e.target.value;
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.target.value;
     setSearchTerm(input);
 
     // Update the list only if there's input
