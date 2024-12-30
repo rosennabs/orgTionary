@@ -8,7 +8,6 @@
 
 Visit the **live** OrgTionary app, deployed on Vercel:  
 [**OrgTionary on Vercel**](https://orgtionary-frontend.vercel.app/)  
-*(Replace with your actual URL.)*
 
 >No local setup is required to explore OrgTionary. Simply open the link above and start browsing or searching the glossary!
 
