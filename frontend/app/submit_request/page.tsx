@@ -24,15 +24,18 @@ interface FormValues {
 };
 
 const validationSchema = Yup.object({
-  word: Yup.string(),
-  definition: Yup.string(),
-  clarification: Yup.string(),
-  examples: Yup.string(),
+  word: Yup.string().required("Required"),
+  definition: Yup.string().required("Required"),
+  clarification: Yup.string().required("Required"),
+  examples: Yup.string().required("Required"),
   relatedWords: Yup.string(),
-  links: Yup.string(),
+  links: Yup.string()
+    .url("Invalid URL format") 
+    .required("Required"),
   comments: Yup.string(),
   email: Yup.string()
-    .email('Invalid email address'),
+    .email('Invalid email address')
+    .required("Required"),
 
 });
 

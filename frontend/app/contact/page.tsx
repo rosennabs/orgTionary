@@ -6,6 +6,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Formik, Form, FormikHelpers } from "formik";
 import FormField from '@/components/FormField';
 import axios from 'axios';
+import * as Yup from "yup";
 
 // Define the type for each question object
 export interface Question {
@@ -15,6 +16,14 @@ export interface Question {
   as?: React.ElementType; // Optional property
   placeholder: string;
 }
+
+const validationSchema = Yup.object({
+  name: Yup.string().required("Required"),
+  message: Yup.string().required("Required"),
+  email: Yup.string()
+    .email('Invalid email address')
+    .required("Required"),
+});
 
 const questions: Question[] = [
   {
@@ -85,6 +94,7 @@ function ContactUs() {
   return (
     <Formik
       initialValues={initialValues}
+      validationSchema={validationSchema}
       onSubmit={handleSubmit}>
 
       {() => (
